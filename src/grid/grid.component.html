@@ -10,31 +10,59 @@
 
 <div style="float:right;border:10px solid white;"><button md-raised-button color="warn">Create a Meetup</button></div>
 
-<form class="example-form">
+<md-vertical-stepper [linear]="isLinear">
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-form-field class="example-full-width">
-      <input mdInput placeholder="Enter your location">
-    </md-form-field></td>
-  </tr></table>
+  <md-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template mdStepLabel>Enter your location</ng-template>
+      <md-form-field>
+        <input mdInput placeholder="Gainesville" formControlName="firstCtrl" required>
+      </md-form-field>
+      <div>
+        <button md-button mdStepperNext>Next</button>
+      </div>
+    </form>
+  </md-step>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><md-form-field class="example-full-width">
-      <input mdInput placeholder="What's the meeting about?">
-    </md-form-field></td>
-  </tr></table>
+  <md-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template mdStepLabel>What's the meeting about?</ng-template>
+      <md-form-field>
+        <input mdInput placeholder="Art, Science, Entertainment" formControlName="secondCtrl" required>
+      </md-form-field>
+      <div>
+        <button md-button mdStepperPrevious>Back</button>
+        <button md-button mdStepperNext>Next</button>
+      </div>
+    </form>
+  </md-step>
 
+  <md-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template mdStepLabel>Meetup Details</ng-template>
+        <table class="example-full-width" cellspacing="0"><tr>
+            <tr><md-form-field class="example-full-width">
+              <input mdInput placeholder="Meetup Name">
+            </md-form-field></tr>
+            <tr><md-form-field class="example-full-width">
+              <textarea mdInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
+            </md-form-field></tr></table>
+        <div>
+          <button md-button mdStepperPrevious>Back</button>
+          <button md-button mdStepperNext>Next</button>
+        </div>
+      </form>
+    </md-step>
 
-  <table class="example-full-width" cellspacing="0"><tr>
-    <tr><md-form-field class="example-full-width">
-      <input mdInput placeholder="Meetup Name">
-    </md-form-field></tr>
-    <tr><md-form-field class="example-full-width">
-      <textarea mdInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
-    </md-form-field></tr></table>
-
+  <md-step>
     <md-checkbox color="primary">I Agree to Terms&Conditions</md-checkbox>
-</form>
+    <ng-template mdStepLabel>Submit</ng-template><br>
+    <div>
+      <button md-button mdStepperPrevious>Submit</button>
+    </div>
+  </md-step>
+</md-vertical-stepper>
+
 
   <!-- Copyright 2017 Google Inc. All Rights Reserved.
       Use of this source code is governed by an MIT-style license that
