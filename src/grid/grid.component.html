@@ -1,15 +1,37 @@
-<md-grid-list cols="4" rowHeight="100px">
-  <md-grid-tile
-    *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-  </md-grid-tile>
-</md-grid-list>
+<md-toolbar color="primary">
+  <span>Gator Meetup</span>
+  <span class="fill-space"></span>
+  <span class="header-right">
+    <i class="material-icons md-36">explore</i>
+    <i class="material-icons md-36">account_circle</i>
+  </span>
+</md-toolbar>
 
-<div style="float:right;border:10px solid white;"><button md-raised-button color="warn">Create a Meetup</button></div>
+<div class="demo-grid-list">
+<md-card>
+  <md-card-title>Meetups Around You</md-card-title>
 
+  <md-card-content>
+    <md-grid-list cols="3" gutterSize="20px" rowHeight="200px">
+      <md-grid-tile *ngFor="let meetup of meetups">
+        <img [alt]="meetup.name" src="{{meetup.url}}">
+        <md-grid-tile-footer>
+          <h3 md-line>{{meetup.name}}</h3>
+          <span md-line>{{meetup.count}} Members</span>
+          <md-icon>star_border</md-icon>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-card-content>
+
+  <div class="create-meetup"><button md-raised-button color="primary" ng-model="showControl">Create a Meetup</button></div>
+
+</md-card>
+</div>
+
+<!-- <dynamic-component [componentData]="componentData"></dynamic-component> -->
+
+<div id="demo-stepper" style="display: none;" ng-show="showControl">
 <md-vertical-stepper [linear]="isLinear">
 
   <md-step [stepControl]="firstFormGroup">
@@ -62,6 +84,7 @@
     </div>
   </md-step>
 </md-vertical-stepper>
+</div>
 
 
   <!-- Copyright 2017 Google Inc. All Rights Reserved.

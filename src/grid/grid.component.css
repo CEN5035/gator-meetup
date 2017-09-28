@@ -1,3 +1,12 @@
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.header-right {
+  position : relative;
+  top : 5px;
+}
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -5,5 +14,13 @@
 }
 
 .example-full-width {
-  width: 100%;
+width: 100%;
+}
+
+.create-meetup  {
+  float: right;
+  border: 10px solid white;
+  top: -72px;
+  position: relative;
+  left: -7px;
 }
