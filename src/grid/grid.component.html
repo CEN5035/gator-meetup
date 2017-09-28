@@ -1,14 +1,41 @@
 <md-grid-list cols="4" rowHeight="100px">
-    <md-grid-tile
-        *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color">
-      {{tile.text}}
-    </md-grid-tile>
-  </md-grid-list>
-  
-  
+  <md-grid-tile
+    *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+  </md-grid-tile>
+</md-grid-list>
+
+<div style="float:right;border:10px solid white;"><button md-raised-button color="warn">Create a Meetup</button></div>
+
+<form class="example-form">
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><md-form-field class="example-full-width">
+      <input mdInput placeholder="Enter your location">
+    </md-form-field></td>
+  </tr></table>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><md-form-field class="example-full-width">
+      <input mdInput placeholder="What's the meeting about?">
+    </md-form-field></td>
+  </tr></table>
+
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <tr><md-form-field class="example-full-width">
+      <input mdInput placeholder="Meetup Name">
+    </md-form-field></tr>
+    <tr><md-form-field class="example-full-width">
+      <textarea mdInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
+    </md-form-field></tr></table>
+
+    <md-checkbox color="primary">I Agree to Terms&Conditions</md-checkbox>
+</form>
+
   <!-- Copyright 2017 Google Inc. All Rights Reserved.
       Use of this source code is governed by an MIT-style license that
       can be found in the LICENSE file at http://angular.io/license -->
