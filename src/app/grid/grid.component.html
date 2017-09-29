@@ -1,16 +1,17 @@
 <md-toolbar color="primary">
+    <span> <img ng-href="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"/> </span>
     <span>Gator Meetup</span>  
     <span class="fill-space"></span>
     <span class="header-right">
-      <i class="material-icons md-36">explore</i>
-      <i class="material-icons md-36">account_circle</i>
+      <i class="material-icons md-48">explore</i>
+      <i class="material-icons md-48">account_circle</i>
     </span>
   </md-toolbar>
 
-<div class="demo-grid-list">
+<div class="demo-grid-list" *ngIf="showGrid">
   <md-card>
     <md-card-title>Meetups Around You</md-card-title>
-    <div class="create-meetup"><button md-raised-button color="warn">Create a Meetup</button></div>
+    <div class="create-meetup"><button md-raised-button color="warn" (click)="onCreateMeetupClick()" >Create a Meetup</button></div>
 
     <md-card-content>
       <md-grid-list cols="3" gutterSize="20px" rowHeight="200px">
@@ -27,7 +28,11 @@
   </md-card>
 </div>
 
-<md-vertical-stepper [linear]="isLinear">
+<md-card *ngIf="showForm">
+  <md-card-title>Create Meetup</md-card-title>
+  
+  <md-card-content>
+  <md-vertical-stepper [linear]="isLinear">
 
   <md-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
@@ -79,5 +84,6 @@
     </div>
   </md-step>
 </md-vertical-stepper>
-
+  </md-card-content>
+</md-card>
         

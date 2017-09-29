@@ -31,9 +31,10 @@ export class GridComponent {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  showForm = false;
+  showGrid = true;
 
   constructor(private _formBuilder: FormBuilder) { }
-
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -44,5 +45,11 @@ export class GridComponent {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+  }
+
+  onCreateMeetupClick() {
+    this.showForm = true;
+    this.showGrid = false;
+    console.log('hi');
   }
 }
