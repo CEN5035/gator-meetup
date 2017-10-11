@@ -8,10 +8,10 @@
     </span>
   </mat-toolbar>
 
-<div class="demo-grid-list" *ngIf="showGrid">
+<div class="demo-grid-list">
   <mat-card>
     <mat-card-title>Meetups Around You</mat-card-title>
-    <div class="create-meetup"><button mat-raised-button color="warn" (click)="onCreateMeetupClick()" >Create a Meetup</button></div>
+    <div class="create-meetup"><a mat-raised-button color="warn" routerLink="/create-meetup" >Create a Meetup</a></div>
 
     <mat-card-content>
       <mat-grid-list cols="3" gutterSize="20px" rowHeight="200px">
@@ -27,63 +27,4 @@
     </mat-card-content>
   </mat-card>
 </div>
-
-<mat-card *ngIf="showForm">
-  <mat-card-title>Create Meetup</mat-card-title>
-  
-  <mat-card-content>
-  <mat-vertical-stepper [linear]="isLinear">
-
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Enter your location</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Gainesville" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>What's the meeting about?</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Art, Science, Entertainment" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="thirdFormGroup">
-      <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Meetup Details</ng-template>
-        <table class="example-full-width" cellspacing="0"><tr>
-            <tr><mat-form-field class="example-full-width">
-              <input matInput placeholder="Meetup Name">
-            </mat-form-field></tr>
-            <tr><mat-form-field class="example-full-width">
-              <textarea matInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
-            </mat-form-field></tr></table>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-
-  <mat-step>
-    <mat-checkbox color="primary">I Agree to Terms&Conditions</mat-checkbox>
-    <ng-template matStepLabel>Submit</ng-template><br>
-    <div>
-      <button mat-button matStepperPrevious>Submit</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
-  </mat-card-content>
-</mat-card>
         

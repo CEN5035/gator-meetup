@@ -1,7 +1,4 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { OnInit} from '@angular/core';
-
 
 /**
  * @title Dynamic grid-list
@@ -27,29 +24,6 @@ export class GridComponent {
     { name: 'Badminton Weekly Meetup', count: '567', url : 'http://quantifiedself.com/wp-content/uploads/2017/04/600_459142880.jpeg' },
   ];
 
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  showForm = false;
-  showGrid = true;
+  constructor() {}
 
-  constructor(private _formBuilder: FormBuilder) { }
-  ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
-    });
-  }
-
-  onCreateMeetupClick() {
-    this.showForm = true;
-    this.showGrid = false;
-    console.log('hi');
-  }
 }
