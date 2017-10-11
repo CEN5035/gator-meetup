@@ -1,89 +1,89 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
     <span> <img ng-href="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"/> </span>
     <span>Gator Meetup</span>  
     <span class="fill-space"></span>
     <span class="header-right">
-      <i class="material-icons md-48">explore</i>
-      <i class="material-icons md-48">account_circle</i>
+      <i class="material-icons mat-48">explore</i>
+      <i class="material-icons mat-48">account_circle</i>
     </span>
-  </md-toolbar>
+  </mat-toolbar>
 
 <div class="demo-grid-list" *ngIf="showGrid">
-  <md-card>
-    <md-card-title>Meetups Around You</md-card-title>
-    <div class="create-meetup"><button md-raised-button color="warn" (click)="onCreateMeetupClick()" >Create a Meetup</button></div>
+  <mat-card>
+    <mat-card-title>Meetups Around You</mat-card-title>
+    <div class="create-meetup"><button mat-raised-button color="warn" (click)="onCreateMeetupClick()" >Create a Meetup</button></div>
 
-    <md-card-content>
-      <md-grid-list cols="3" gutterSize="20px" rowHeight="200px">
-        <md-grid-tile *ngFor="let meetup of meetups">
+    <mat-card-content>
+      <mat-grid-list cols="3" gutterSize="20px" rowHeight="200px">
+        <mat-grid-tile *ngFor="let meetup of meetups">
           <img [alt]="meetup.name" src="{{meetup.url}}">
-          <md-grid-tile-footer>
-            <h3 md-line>{{meetup.name}}</h3>
-            <span md-line>{{meetup.count}} Members</span>
-            <md-icon>star_border</md-icon>
-          </md-grid-tile-footer>
-        </md-grid-tile>
-      </md-grid-list>
-    </md-card-content>
-  </md-card>
+          <mat-grid-tile-footer>
+            <h3 mat-line>{{meetup.name}}</h3>
+            <span mat-line>{{meetup.count}} Members</span>
+            <mat-icon>star_border</mat-icon>
+          </mat-grid-tile-footer>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
 </div>
 
-<md-card *ngIf="showForm">
-  <md-card-title>Create Meetup</md-card-title>
+<mat-card *ngIf="showForm">
+  <mat-card-title>Create Meetup</mat-card-title>
   
-  <md-card-content>
-  <md-vertical-stepper [linear]="isLinear">
+  <mat-card-content>
+  <mat-vertical-stepper [linear]="isLinear">
 
-  <md-step [stepControl]="firstFormGroup">
+  <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template mdStepLabel>Enter your location</ng-template>
-      <md-form-field>
+      <mat-form-field>
         <input mdInput placeholder="Gainesville" formControlName="firstCtrl" required>
-      </md-form-field>
+      </mat-form-field>
       <div>
-        <button md-button mdStepperNext>Next</button>
+        <button mat-button mdStepperNext>Next</button>
       </div>
     </form>
-  </md-step>
+  </mat-step>
 
-  <md-step [stepControl]="secondFormGroup">
+  <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template mdStepLabel>What's the meeting about?</ng-template>
-      <md-form-field>
+      <mat-form-field>
         <input mdInput placeholder="Art, Science, Entertainment" formControlName="secondCtrl" required>
-      </md-form-field>
+      </mat-form-field>
       <div>
-        <button md-button mdStepperPrevious>Back</button>
-        <button md-button mdStepperNext>Next</button>
+        <button mat-button mdStepperPrevious>Back</button>
+        <button mat-button mdStepperNext>Next</button>
       </div>
     </form>
-  </md-step>
+  </mat-step>
 
-  <md-step [stepControl]="thirdFormGroup">
+  <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
         <ng-template mdStepLabel>Meetup Details</ng-template>
         <table class="example-full-width" cellspacing="0"><tr>
-            <tr><md-form-field class="example-full-width">
+            <tr><mat-form-field class="example-full-width">
               <input mdInput placeholder="Meetup Name">
-            </md-form-field></tr>
-            <tr><md-form-field class="example-full-width">
+            </mat-form-field></tr>
+            <tr><mat-form-field class="example-full-width">
               <textarea mdInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
-            </md-form-field></tr></table>
+            </mat-form-field></tr></table>
         <div>
-          <button md-button mdStepperPrevious>Back</button>
-          <button md-button mdStepperNext>Next</button>
+          <button mat-button mdStepperPrevious>Back</button>
+          <button mat-button mdStepperNext>Next</button>
         </div>
       </form>
-    </md-step>
+    </mat-step>
 
-  <md-step>
-    <md-checkbox color="primary">I Agree to Terms&Conditions</md-checkbox>
+  <mat-step>
+    <mat-checkbox color="primary">I Agree to Terms&Conditions</mat-checkbox>
     <ng-template mdStepLabel>Submit</ng-template><br>
     <div>
-      <button md-button mdStepperPrevious>Submit</button>
+      <button mat-button mdStepperPrevious>Submit</button>
     </div>
-  </md-step>
-</md-vertical-stepper>
-  </md-card-content>
-</md-card>
+  </mat-step>
+</mat-vertical-stepper>
+  </mat-card-content>
+</mat-card>
         
