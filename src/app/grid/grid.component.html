@@ -36,51 +36,51 @@
 
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template mdStepLabel>Enter your location</ng-template>
+      <ng-template matStepLabel>Enter your location</ng-template>
       <mat-form-field>
-        <input mdInput placeholder="Gainesville" formControlName="firstCtrl" required>
+        <input matInput placeholder="Gainesville" formControlName="firstCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button mdStepperNext>Next</button>
+        <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
 
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template mdStepLabel>What's the meeting about?</ng-template>
+      <ng-template matStepLabel>What's the meeting about?</ng-template>
       <mat-form-field>
-        <input mdInput placeholder="Art, Science, Entertainment" formControlName="secondCtrl" required>
+        <input matInput placeholder="Art, Science, Entertainment" formControlName="secondCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button mdStepperPrevious>Back</button>
-        <button mat-button mdStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
 
   <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
-        <ng-template mdStepLabel>Meetup Details</ng-template>
+        <ng-template matStepLabel>Meetup Details</ng-template>
         <table class="example-full-width" cellspacing="0"><tr>
             <tr><mat-form-field class="example-full-width">
-              <input mdInput placeholder="Meetup Name">
+              <input matInput placeholder="Meetup Name">
             </mat-form-field></tr>
             <tr><mat-form-field class="example-full-width">
-              <textarea mdInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
+              <textarea matInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
             </mat-form-field></tr></table>
         <div>
-          <button mat-button mdStepperPrevious>Back</button>
-          <button mat-button mdStepperNext>Next</button>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
 
   <mat-step>
     <mat-checkbox color="primary">I Agree to Terms&Conditions</mat-checkbox>
-    <ng-template mdStepLabel>Submit</ng-template><br>
+    <ng-template matStepLabel>Submit</ng-template><br>
     <div>
-      <button mat-button mdStepperPrevious>Submit</button>
+      <button mat-button matStepperPrevious>Submit</button>
     </div>
   </mat-step>
 </mat-vertical-stepper>
