@@ -1,0 +1,23 @@
+.fill-space {
+    flex: 1 1 auto;
+}
+
+.header-right {
+    position : relative;
+    top : 5px;
+}
+
+.icon-32 {
+    font-size: 32px;
+}
+
+.home-toolbar {
+    height: 60px;
+    display: flex;
+    align-content: center;
+}
+
+.home-banner {
+    position: relative;
+    height: 80px;
+}
