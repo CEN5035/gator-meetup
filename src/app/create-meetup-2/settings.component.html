@@ -3,10 +3,7 @@
   <mat-card-content>
     <div class="settings-container">
       <div class="settings-menu">
-        <div class="settings-item" 
-          *ngFor="let setting of settingsItems; let i = index" 
-          (click)="selectSetting(i)" 
-          [ngClass]="{'active-setting' : selectedSettingsItem === setting.name}">
+        <div class="settings-item" *ngFor="let setting of settingsItems; let i = index" (click)="selectSetting(i)" [ngClass]="{'active-setting' : selectedSettingsItem === setting.name}">
           {{setting.name}}
         </div>
       </div>
@@ -23,7 +20,7 @@
             </div>
             <div class="general-item">
               <div class="general-item-name">Email address: </div>
-              <div class="general-item-value">james.smith@gmail.com</div> 
+              <div class="general-item-value">james.smith@gmail.com</div>
             </div>
           </div>
         </ng-template>
@@ -32,14 +29,6 @@
           <div class="setting-content-item">
               <h3>
                   Profile Settings
-              </h3>
-          </div>
-        </ng-template>
-        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'Privacy';then privacySettings"></div>
-        <ng-template #privacySettings>
-          <div class="setting-content-item">
-              <h3>
-                  Privacy Settings
               </h3>
           </div>
         </ng-template>
