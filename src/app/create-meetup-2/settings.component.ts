@@ -16,6 +16,8 @@ export class SettingsComponent implements OnInit {
   settingsItems: Object[] = [
     { name: 'General'},
     { name: 'Profile'},
+    { name: 'Others'},
+    
    ];
   selectedSettingsItem: String = this.settingsItems[0]['name'];
 
