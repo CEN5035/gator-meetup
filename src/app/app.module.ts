@@ -46,6 +46,8 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
+import { SettingsComponent } from './create-meetup-2/settings.component';
+// import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   exports: [
@@ -89,7 +91,9 @@ export class AppMaterialModule {}
   declarations: [
     AppComponent,
     GridComponent,
-    CreateMeetupComponent
+    CreateMeetupComponent,
+    SettingsComponent
+    // SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -21,3 +21,8 @@
     position: relative;
     height: 80px;
 }
+
+.settings-nav {
+    text-decoration: none;
+    color: #fff;
+}
