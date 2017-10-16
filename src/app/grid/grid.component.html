@@ -1,5 +1,5 @@
-<div class="demo-grid-list">
-  <mat-card>
+<div class="demo-grid-list grid-inner-div">
+  <!-- <mat-card>
     <mat-card-title>Meetups Around You</mat-card-title>
     <div class="create-meetup"><a mat-raised-button color="warn" routerLink="/create-meetup" >Create a Meetup</a></div>
 
@@ -15,6 +15,27 @@
         </mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
+
+  <h2 style="color: #424242;">Meetups Around You</h2>
+  <div class="create-meetup"><a mat-raised-button color="warn" routerLink="/create-meetup" >Create a Meetup</a></div>
+  
+    <mat-grid-list cols="3" gutterSize="10px" rowHeight="300px">
+      <mat-grid-tile *ngFor="let meetup of meetups">
+        <mat-card mat-ripple style="padding: 0px; top:-20px;">
+            <img flex [alt]="meetup.name" src="{{meetup.url}}" width="100%"  height="250px">
+            <mat-card-footer item-height="150px" style="padding-bottom: 25px; padding-left: 40px; padding-right: 40px;">
+              <span style="color: #505050; font-size: 18px; position: relative; top: 10px;">{{meetup.name}}</span>
+              <mat-icon style="float: right; position: relative; top: 12px;">star_border</mat-icon>                            
+              <p style="color: #7d7d7d; font-size: 15px; position: relative; top: -2px;">{{meetup.count}} Members</p>              
+            </mat-card-footer>
+          </mat-card>
+        
+      </mat-grid-tile>
+  </mat-grid-list>
+
+  <div style="margin-left: 35%; margin-right: 35%; margin-top: 10px; margin-bottom: 10px;">
+      <a mat-raised-button style="width: 100%;">Show More</a>      
+  </div>
 </div>
         
