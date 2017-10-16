@@ -1,57 +1,105 @@
-<mat-card>
-    <mat-card-title>Create Meetup</mat-card-title>
+<div class="w3-container  w3-margin">
+  <mat-card>
+    <mat-card-title>
+      Create Meetup
+    </mat-card-title>
     <mat-card-content>
-    <mat-vertical-stepper [linear]="isLinear">
-  
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Enter your location</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Gainesville" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-  
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>What's the meeting about?</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Art, Science, Entertainment" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-  
-    <mat-step [stepControl]="thirdFormGroup">
-        <form [formGroup]="thirdFormGroup">
-          <ng-template matStepLabel>Meetup Details</ng-template>
-          <table class="example-full-width" cellspacing="0"><tr>
-              <tr><mat-form-field class="example-full-width">
-                <input matInput placeholder="Meetup Name">
-              </mat-form-field></tr>
-              <tr><mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Describe who should join, and what your Meetup will do"></textarea>
-              </mat-form-field></tr></table>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+      <ul class="w3-ul w3-margin-top" *ngIf="!submited">
+        <li>
+          <div class="create-meetup-step-alignment">
+            STEP 1 OF 4
           </div>
-        </form>
-      </mat-step>
-  
-    <mat-step>
-      <mat-checkbox color="primary">I Agree to Terms&Conditions</mat-checkbox>
-      <ng-template matStepLabel>Submit</ng-template><br>
-      <div>
-        <button mat-button matStepperPrevious>Submit</button>
-      </div>
-    </mat-step>
-  </mat-vertical-stepper>
+          <div>
+            <div class="create-meetup-image-alignment">
+              <img src="assets/create-meetup/globe.png" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+            </div>
+            <form [formGroup]="locationForm">
+            <div class="create-meetup-question-alignment">
+              <h3>Whats's your meetup group's location?</h3>
+            </div>
+            <div>
+              <input class="w3-border create-meetup-textbox" type="text" formControlName="location">
+            </div>
+            <div>
+              <button class="raised-button"  mat-raised-button color="primary" [disabled]="!locationForm.valid" (click)="onLocationClick()">Next</button>
+            </div>
+            </form>
+          </div>
+        </li>
+        <li *ngIf="isLocationSet">
+          <div class="create-meetup-step-alignment">
+              STEP 2 OF 4
+          </div>
+          <div>
+            <div class="create-meetup-image-alignment">
+              <img src="assets/create-meetup/meeting.jpg" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+            </div>
+            <form [formGroup]="agendaForm">
+            <div class="create-meetup-question-alignment">
+              <h3>What will your group meeting be about?</h3>
+            </div>
+            <div>
+              <input class="w3-border create-meetup-textbox" type="text" formControlName="agenda">
+            </div>
+            <div>
+              <button class="raised-button"  mat-raised-button color="primary" [disabled]="!agendaForm.valid" (click)="onAgendaClick()">Next</button>
+            </div>
+            </form>
+          </div>
+        </li>
+        <li *ngIf="isTopicSet">
+          <div class="create-meetup-step-alignment">
+                STEP 3 OF 4
+          </div>
+          <div>
+            <div class="create-meetup-image-alignment">
+              <img src="assets/create-meetup/tags.jpg" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+            </div>
+            <form [formGroup]="topicForm">
+            <div class="create-meetup-question-alignment">
+              <h3>What is the name of the your new meeting?</h3>
+            </div>
+            <div>
+              <input class="w3-border create-meetup-textbox" type="text" formControlName="name">
+            </div>
+            <div class="raised-button">
+              <h3>Describe who should join, and what your Meetup will do</h3>
+            </div>
+            <div>
+              <textarea class="w3-border create-meetup-textbox" formControlName="description"></textarea>
+            </div>
+            <div>
+                <button class="raised-button"  mat-raised-button color="primary" [disabled]="!topicForm.valid" (click)="onNameClick()">Next</button>
+            </div>
+            </form>
+          </div>
+        </li>
+        <li></li>
+      </ul>
+        <div *ngIf="isNameSet">
+          <div class="create-meetup-step-alignment">
+            STEP 4 OF 4
+          </div>
+          <div>
+            <div class="create-meetup-image-alignment">
+              <img src="assets/create-meetup/terms.png" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+            </div>
+            <div class="create-meetup-question-alignment">
+              <h3>What it means to organize a meeting in UF?</h3>
+            </div>
+            <div>
+              <ul class="create-meetup-list">
+                <li>Real, in-person conversations</li>
+                <li>Open and honest intentions</li>
+                <li>Always safe and respectful</li>
+                <li>Put your members first</li>
+              </ul>
+            </div>
+            <div>
+              <button mat-raised-button color="primary" class="raised-button" (click)="onSubmit()"> Agree and Continue </button>
+            </div>
+          </div>
+        </div>
     </mat-card-content>
   </mat-card>
+</div>
