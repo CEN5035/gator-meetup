@@ -43,3 +43,7 @@
   margin-bottom:1.5%;
 }
 
+.mat-card {
+  min-width:650px;
+  margin:0 auto;
+}
