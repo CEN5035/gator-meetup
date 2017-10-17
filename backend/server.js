@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser');
 
+app.use(bodyParser());
 /*************************** MongoDB Connection *********************************/
 
 var MongoClient = require('mongodb').MongoClient
@@ -37,8 +39,8 @@ app.get('/getMeetups', function (req, res) {
 
 // post meetup 
 app.post('/postMeetup', function (req, res) {
-	db.collection('meetup').save(req.body, (err, result) => {
-    if (err) return console.log(err)
+	db.collection('meetup').insertOne(req.body, (err, result) => {
+    if (err) return console.log(err);
     console.log('saved to database')
   })
 });
