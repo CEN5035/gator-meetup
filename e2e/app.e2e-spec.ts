@@ -1,10 +1,31 @@
 import { AppPage } from './app.po';
+import {browser, by, element, protractor} from 'protractor';
 
 describe('gator-meetup App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+  });
+
+  it('Should display the page title correctly', () => {
+    page.navigateToHome();
+    expect(browser.getTitle()).toEqual('GatorMeetup');
+  });
+
+  it('Should display meetups grid title', () => {
+    page.navigateToHome();
+    expect(page.getParagraphText()).toEqual('Meetups Around You');
+  });
+
+  it('Create event button should open the create page', () => {
+    page.getCreateMeetupButton().click();
+    expect(browser.getCurrentUrl()).toContain('/create-meetup');
+  });
+
+  it('Create event text in footer should open the create page', () => {
+    page.getCreateMeetupButtonFooter().click();
+    expect(browser.getCurrentUrl()).toContain('/create-meetup');
   });
 
   it('should display Create meetup card', () => {
@@ -106,6 +127,19 @@ describe('gator-meetup App', () => {
     page.enterDataIntoTextArea(0, 'This sentence contains more than 15 characters');
     page.clickNextButton(2);
     expect(page.getCreateMeetUpFormQuestions(4)).toEqual('What it means to organize a meeting in UF?');
+  });
+
+  it('User is taken to HomePage after event creation', () => {
+    page.navigateToCreateMeetup();
+    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.clickNextButton(0);
+    page.enterDataIntoTextBox(1, 'Entertainment');
+    page.clickNextButton(1);
+    page.enterDataIntoTextBox(2, 'UFEntertainment');
+    page.enterDataIntoTextArea(0, 'This sentence contains more than 15 characters');
+    page.clickNextButton(2);
+    page.clickNextButton(3);
+    expect(browser.getCurrentUrl()).toContain('/home');
   });
 
 });
