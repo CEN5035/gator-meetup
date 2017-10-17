@@ -1,81 +1,82 @@
-<div class="w3-container  w3-margin">
+<div class="w3-container w3-margin">
   <mat-card>
-    <mat-card-title>
+    <mat-card-title class="w3-center">
       Create Meetup
     </mat-card-title>
     <mat-card-content>
-      <ul class="w3-ul w3-margin-top" *ngIf="!submited">
-        <li>
-          <div class="create-meetup-step-alignment">
-            STEP 1 OF 4
-          </div>
-          <div>
-            <div class="create-meetup-image-alignment">
-              <img src="assets/create-meetup/globe.png" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+      <div class="create-meetup-container">
+        <ul class="w3-ul w3-margin-top" *ngIf="!submited">
+          <li>
+              <div class="create-meetup-step-alignment">
+                STEP 1 OF 4
+              </div>
+              <div>
+                <div class="create-meetup-image-alignment">
+                  <img src="assets/create-meetup/globe.png" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+                </div>
+                <form [formGroup]="locationForm">
+                  <div class="create-meetup-question-alignment">
+                    <h3>Whats's your meetup group's location?</h3>
+                  </div>
+                  <div>
+                    <input class="w3-border create-meetup-textbox" type="text" formControlName="location">
+                  </div>
+                  <div>
+                    <button class="raised-button"  mat-raised-button color="primary" [disabled]="!locationForm.valid" (click)="onLocationClick()">Next</button>
+                  </div>
+                </form>
             </div>
-            <form [formGroup]="locationForm">
-            <div class="create-meetup-question-alignment">
-              <h3>Whats's your meetup group's location?</h3>
-            </div>
-            <div>
-              <input class="w3-border create-meetup-textbox" type="text" formControlName="location">
-            </div>
-            <div>
-              <button class="raised-button"  mat-raised-button color="primary" [disabled]="!locationForm.valid" (click)="onLocationClick()">Next</button>
-            </div>
-            </form>
-          </div>
-        </li>
-        <li *ngIf="isLocationSet">
-          <div class="create-meetup-step-alignment">
-              STEP 2 OF 4
-          </div>
-          <div>
-            <div class="create-meetup-image-alignment">
-              <img src="assets/create-meetup/meeting.jpg" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
-            </div>
-            <form [formGroup]="agendaForm">
-            <div class="create-meetup-question-alignment">
-              <h3>What will your group meeting be about?</h3>
+          </li>
+          <li *ngIf="isLocationSet">
+            <div class="create-meetup-step-alignment">
+                STEP 2 OF 4
             </div>
             <div>
-              <input class="w3-border create-meetup-textbox" type="text" formControlName="agenda">
+              <div class="create-meetup-image-alignment">
+                <img src="assets/create-meetup/meeting.jpg" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+              </div>
+              <form [formGroup]="agendaForm">
+              <div class="create-meetup-question-alignment">
+                <h3>What will your group meeting be about?</h3>
+              </div>
+              <div>
+                <input class="w3-border create-meetup-textbox" type="text" formControlName="agenda">
+              </div>
+              <div>
+                <button class="raised-button"  mat-raised-button color="primary" [disabled]="!agendaForm.valid" (click)="onAgendaClick()">Next</button>
+              </div>
+              </form>
+            </div>
+          </li>
+          <li *ngIf="isTopicSet">
+            <div class="create-meetup-step-alignment">
+                  STEP 3 OF 4
             </div>
             <div>
-              <button class="raised-button"  mat-raised-button color="primary" [disabled]="!agendaForm.valid" (click)="onAgendaClick()">Next</button>
+              <div class="create-meetup-image-alignment">
+                <img src="assets/create-meetup/tags.jpg" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+              </div>
+              <form [formGroup]="topicForm">
+              <div class="create-meetup-question-alignment">
+                <h3>What is the name of the your new meeting?</h3>
+              </div>
+              <div>
+                <input class="w3-border create-meetup-textbox" type="text" formControlName="name">
+              </div>
+              <div class="raised-button">
+                <h3>Describe who should join, and what your Meetup will do</h3>
+              </div>
+              <div>
+                <textarea class="w3-border create-meetup-textbox" formControlName="description"></textarea>
+              </div>
+              <div>
+                  <button class="raised-button"  mat-raised-button color="primary" [disabled]="!topicForm.valid" (click)="onNameClick()">Next</button>
+              </div>
+              </form>
             </div>
-            </form>
-          </div>
-        </li>
-        <li *ngIf="isTopicSet">
-          <div class="create-meetup-step-alignment">
-                STEP 3 OF 4
-          </div>
-          <div>
-            <div class="create-meetup-image-alignment">
-              <img src="assets/create-meetup/tags.jpg" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
-            </div>
-            <form [formGroup]="topicForm">
-            <div class="create-meetup-question-alignment">
-              <h3>What is the name of the your new meeting?</h3>
-            </div>
-            <div>
-              <input class="w3-border create-meetup-textbox" type="text" formControlName="name">
-            </div>
-            <div class="raised-button">
-              <h3>Describe who should join, and what your Meetup will do</h3>
-            </div>
-            <div>
-              <textarea class="w3-border create-meetup-textbox" formControlName="description"></textarea>
-            </div>
-            <div>
-                <button class="raised-button"  mat-raised-button color="primary" [disabled]="!topicForm.valid" (click)="onNameClick()">Next</button>
-            </div>
-            </form>
-          </div>
-        </li>
-        <li></li>
-      </ul>
+          </li>
+          <li></li>
+        </ul>
         <div *ngIf="isNameSet">
           <div class="create-meetup-step-alignment">
             STEP 4 OF 4
@@ -100,6 +101,7 @@
             </div>
           </div>
         </div>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
