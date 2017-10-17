@@ -7,7 +7,7 @@ export class AppPage {
   }
 
   navigateToHome() {
-    return browser.get('/');
+    return browser.get('/home');
   }
 
   getParagraphText() {
@@ -16,6 +16,10 @@ export class AppPage {
 
   getCreateMeetupButton() {
     return element(by.className('create-meetup'));
+  }
+
+  getCreateMeetupButtonFooter() {
+    return element(by.id('create-meetup-footer-link'));
   }
 
   getMeetUpCardTitle() {
