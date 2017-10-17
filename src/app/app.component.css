@@ -22,6 +22,41 @@
     height: 80px;
 }
 
+.create-event-text {
+    color: #ec3d5c;
+    font-size: 15px;
+}
+
+.home-footer {
+    background: #0f1721;
+    min-height: 100px;
+    color: #FFFFFF;
+    font-size: 17px;
+}
+.home-footer-inner-div {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 30px;
+    padding-bottom: 20px;       
+}
+.text-align-right {
+    text-align: right;
+}
+
+.footer-divider {
+    border-bottom:1px solid #3c3c3c;
+    padding-bottom: 15px;
+}
+
+.footer-pages {
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+
+.footer-text-thin {
+    font-size: 15px;
+    color: #afafaf;
+  
 .settings-nav {
     text-decoration: none;
     color: #fff;
