@@ -6,6 +6,18 @@ export class AppPage {
     return browser.get('/create-meetup');
   }
 
+  navigateToHome() {
+    return browser.get('/');
+  }
+
+  getParagraphText() {
+    return element(by.css('app-root h2')).getText();
+  }
+
+  getCreateMeetupButton() {
+    return element(by.className('create-meetup'));
+  }
+
   getMeetUpCardTitle() {
     return element(by.css('mat-card-title')).getText();
   }

@@ -1,10 +1,26 @@
 import { AppPage } from './app.po';
+import {browser, by, element, protractor} from 'protractor';
 
 describe('gator-meetup App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+  });
+
+  it('Should display the page title correctly', () => {
+    page.navigateToHome();
+    expect(browser.getTitle()).toEqual('GatorMeetup');
+  });
+
+  it('Should display meetups grid title', () => {
+    page.navigateToHome();
+    expect(page.getParagraphText()).toEqual('Meetups Around You');
+  });
+
+  it('Create event button should open create page', () => {
+    page.getCreateMeetupButton().click();
+    expect(browser.getCurrentUrl()).toContain('/create-meetup');
   });
 
   it('should display Create meetup card', () => {
