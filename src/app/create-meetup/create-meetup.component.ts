@@ -21,6 +21,9 @@ export class CreateMeetupComponent {
   agenda = '';
   name = '';
   description = '';
+  hideLocationNext = true;
+  
+
 
 
   constructor(private fb: FormBuilder) {
@@ -40,6 +43,11 @@ export class CreateMeetupComponent {
     this.isLocationSet = true;
   }
 
+  onLocationSelection(selectedLoc: any) {
+    console.log(selectedLoc);
+    this.hideLocationNext=false;
+  }
+
   onAgendaClick() {
     this.isTopicSet = true;
   }
@@ -52,23 +60,4 @@ export class CreateMeetupComponent {
     this.submitted = true;
   }
 
-  // ngOnInit() {
-
-  //   this.rForm.get('validate').valueChanges.subscribe(
-  //     (validate) => {
-  //       if (validate === '1') {
-  //         this.rForm.get('name').setValidators([Validators.required, Validators.minLength(3)]);
-  //         this.titleAlert = 'You need to specify at least 3 characters';
-  //       } else {
-  //         this.rForm.get('name').setValidators(Validators.required);
-  //       }
-  //       this.rForm.get('name').updateValueAndValidity();
-  //     }
-  //   );
-  // }
-
-  // addPost(post) {
-  //   this.description = post.description;
-  //   this.name = post.name;
-  // }
 }
