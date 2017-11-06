@@ -11,6 +11,8 @@ import { GridComponent } from './grid/grid.component';
 import { AppRoutingModule } from './app-routing.module';
 import {CdkTableModule} from '@angular/cdk/table';
 
+import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
+
 
 import {
   MatAutocompleteModule,
@@ -102,7 +104,8 @@ export class AppMaterialModule {}
     HttpModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    Ng4GeoautocompleteModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,10 +19,11 @@
                     <h3>Whats's your meetup group's location?</h3>
                   </div>
                   <div>
-                    <input class="w3-border create-meetup-textbox" type="text" formControlName="location">
+                    <!-- <input class="w3-border create-meetup-textbox" type="text" formControlName="location"> -->
+                    <ng4geo-autocomplete (componentCallback)="onLocationSelection($event)"></ng4geo-autocomplete>
                   </div>
                   <div>
-                    <button class="raised-button"  mat-raised-button color="primary" [disabled]="!locationForm.valid" (click)="onLocationClick()">Next</button>
+                    <button class="raised-button"  mat-raised-button color="primary" [disabled]="hideLocationNext" (click)="onLocationClick()">Next</button>
                   </div>
                 </form>
             </div>

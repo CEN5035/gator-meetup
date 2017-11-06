@@ -32,6 +32,11 @@
   margin-top:1.5%;
 }
 
+.location-complete-textbox {
+  margin-left: 33.5%;
+  height: 15%;
+}
+
 .create-meetup-list {
   margin-left: 33.5%;
   display: block;
