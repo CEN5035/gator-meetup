@@ -41,10 +41,10 @@
                 <h3>What will your group meeting be about?</h3>
               </div>
               <div>
-                <input class="w3-border create-meetup-textbox" type="text" formControlName="agenda">
+                <input class="w3-border create-meetup-textbox" type="text" [(ngModel)]="agenda" formControlName="agenda" >
               </div>
               <div>
-                <button class="raised-button"  mat-raised-button color="primary" [disabled]="!agendaForm.valid" (click)="onAgendaClick()">Next</button>
+                <button class="raised-button"  mat-raised-button color="primary" [disabled]="!agendaForm.valid" (click)="onAgendaClick(agenda)">Next</button>
               </div>
               </form>
             </div>
@@ -62,13 +62,13 @@
                 <h3>What is the name of the your new meeting?</h3>
               </div>
               <div>
-                <input class="w3-border create-meetup-textbox" type="text" formControlName="name">
+                <input class="w3-border create-meetup-textbox" type="text" [(ngModel)]="name" formControlName="name">
               </div>
               <div class="raised-button">
                 <h3>Describe who should join, and what your Meetup will do</h3>
               </div>
               <div>
-                <textarea class="w3-border create-meetup-textbox" formControlName="description"></textarea>
+                <textarea class="w3-border create-meetup-textbox" [(ngModel)]="description" formControlName="description"></textarea>
               </div>
               <div>
                   <button class="raised-button"  mat-raised-button color="primary" [disabled]="!topicForm.valid" (click)="onNameClick()">Next</button>
