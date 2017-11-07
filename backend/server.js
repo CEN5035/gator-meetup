@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const http = require('http');
-require('dotenv').load();
 var cors= require('cors');
+require('dotenv').load();
 
+app.use(cors({origin: '*'}));
 // API file for interacting with MongoDB
 const api = require('./server/routes/api');
 
