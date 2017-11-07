@@ -7,7 +7,6 @@ const ObjectID = require('mongodb').ObjectID
 var db; 
 
 // Connection URL
-console.log(process.env)
 var url = process.env.MONGO_DB_DEV_URI
 
 // Use connect method to connect to the server
@@ -58,6 +57,7 @@ router.post('/postMeetup', (req, res) => {
             .then((events) => {
                 response.data = events;
                 res.json(response);
+                console.log(res);
             })
             .catch((err) => {
                 sendError(err, res);
