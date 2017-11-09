@@ -40,27 +40,27 @@ describe('gator-meetup App', () => {
 
   it('next button should be enabled after location is entered', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     expect(page.getButton(0).isEnabled()).toBeTruthy();
   });
 
   it('should display step 2 once location value is entered', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     expect(page.getCreateMeetUpFormQuestions(1)).toEqual('What will your group meeting be about?');
   });
 
   it('should display step 2 once location value is entered and next button of step 2 should be inactive', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     expect(page.getButton(1).isEnabled()).toBeFalsy();
   });
 
   it('after agenda is entered step 2 next should be enabled', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     expect(page.getButton(1).isEnabled()).toBeTruthy();
@@ -68,7 +68,7 @@ describe('gator-meetup App', () => {
 
   it('should display step 3 once step 2 is successful', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     page.clickNextButton(1);
@@ -77,7 +77,7 @@ describe('gator-meetup App', () => {
 
   it('should not enable next button for text length less than 16', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     page.clickNextButton(1);
@@ -88,7 +88,7 @@ describe('gator-meetup App', () => {
 
   it('should not enable next button for if anyone of description or name is not filled', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     page.clickNextButton(1);
@@ -98,7 +98,7 @@ describe('gator-meetup App', () => {
 
   it('should not enable next button for text greater less than 60', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     page.clickNextButton(1);
@@ -108,7 +108,7 @@ describe('gator-meetup App', () => {
 
   it('step 3 next available once successful values are entered', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     page.clickNextButton(1);
@@ -119,7 +119,7 @@ describe('gator-meetup App', () => {
 
   it('step 4 available once step 3 is successful', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     page.clickNextButton(1);
@@ -131,7 +131,7 @@ describe('gator-meetup App', () => {
 
   it('User is taken to HomePage after event creation', () => {
     page.navigateToCreateMeetup();
-    page.enterDataIntoTextBox(0, 'Gainesville');
+    page.selectLocation();
     page.clickNextButton(0);
     page.enterDataIntoTextBox(1, 'Entertainment');
     page.clickNextButton(1);

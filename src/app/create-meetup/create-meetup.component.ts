@@ -64,7 +64,7 @@ export class CreateMeetupComponent {
     this.postData.agenda=this.agenda;
     this.postData.meetupName=this.name;
     this.postData.count=550;
-    this.postData.pictureUrl='http://quantifiedself.com/wp-content/uploads/2017/04/600_459142880.jpeg';
+    this.postData.thumbUrl='http://quantifiedself.com/wp-content/uploads/2017/04/600_459142880.jpeg';
     this.postData.description=this.description;
     this.postData.coordinates=[this.selectedLoc.geometry.location.lat,this.selectedLoc.geometry.location.lng];
     this.postData.meetupOwner="Venkat" //session userid should be passed.

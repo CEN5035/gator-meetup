@@ -7,6 +7,7 @@ supertest = require('supertest');
 
 var request = supertest('localhost:8000');
 
+describe('meetup events', function() {
   it('create a meetup', function(done) {
     request.post('/postMeetup')
             .field('location','Gainesville')
@@ -21,6 +22,7 @@ var request = supertest('localhost:8000');
               done();
             });
   });
+});
 
 it('should return the welcome message ', function() {
   return chai.request(app)
