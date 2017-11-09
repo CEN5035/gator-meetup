@@ -32,6 +32,10 @@ let response = {
     message: null
 };
 
+router.get('/invalidURL', (req, res) => {
+    sendError(req,res);
+});
+
 router.get('/searchMeetups', (req, res) => {
     connection((db) => {
         console.log(req);    

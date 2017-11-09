@@ -37,6 +37,7 @@ export class AppPage {
   selectLocation() {
     element.all(by.tagName('input')).get(0).click();
     element.all(by.tagName('a')).get(2).click();
+    browser.sleep(1500);
   }
 
   enterDataIntoTextArea(index, message) {
