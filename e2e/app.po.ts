@@ -34,6 +34,11 @@ export class AppPage {
     return element.all(by.css('h3')).get(index).getText();
   }
 
+  selectLocation() {
+    element.all(by.tagName('input')).get(0).click();
+    element.all(by.tagName('a')).get(2).click();
+  }
+
   enterDataIntoTextArea(index, message) {
     const firstTextBox = element.all(by.tagName('textarea')).get(index);
     const a = message;
