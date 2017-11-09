@@ -20,12 +20,12 @@ export class GetMeetupsService {
      return this._http.get("http://localhost:8000/getMeetups", options).map(result => this.result = result.json().data);
   }
 
-  // searchMeetups(reqBody) {
-  //   let headers = new Headers();
-  //   let body=JSON.stringify(reqBody);
-  //   headers.append('Content-Type','x-www-form-urlencoded');
-  //   let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
-  //    return this._http.post("http://localhost:8000/postMeetup",body,options).subscribe(res => {});
-  // }
+  searchMeetups(searchTerm): Observable<Object> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'x-www-form-urlencoded');
+    headers.append('search', searchTerm);
+    let options = new RequestOptions( {method: RequestMethod.Get, headers: headers });
+     return this._http.get("http://localhost:8000/searchMeetups", options).map(result => this.result = result.json().data);
+  }
 
 }
