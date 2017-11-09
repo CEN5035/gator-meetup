@@ -1,9 +1,11 @@
+
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let server = require('../server');
+let app = require('../server');
 let should = chai.should();
+chai.use(chaiHttp);
 const expect = require('chai').expect;
-supertest = require('supertest');
+let supertest = require('supertest');
 
 var request = supertest('localhost:8000');
 
@@ -18,29 +20,36 @@ describe('meetup events', function() {
             .field('coordinates',[100.5,85.6])
             .field('meetupOwner','Venkat')
             .then(function(res) {
-              console.log(res.body);
+              // console.log(res.body);
               done();
             });
   });
 });
 
+describe('welcome events', function() {
 it('should return the welcome message ', function() {
   return chai.request(app)
     .get('/')
     .then(function(res) {
-      //console.log(res.body.results)
+      // console.log(res)
       expect(res).to.have.status(200);
-      expect(res.body.results).equal("Welcome to Gator Meetup API");
+      expect(res.text).contains("Welcome to Gator Meetup API");
     });
 });
 
-it('should return Not Found', function() {
-  return chai.request(app)
-    .get('/INVALID_PATH')
-    .then(function(res) {
-      throw new Error('Path exists!');
-    })
-    .catch(function(err) {
-      expect(err).to.have.status(404);
-    });
 });
+
+describe('invalid endpoint', function() {
+  it('should return 500 Error', function() {
+    return chai.request(app)
+      .get('/invalidURL')
+      .then(function(res) {
+        console.log(res);
+        throw res;
+      })
+      .catch(function(err) {
+        expect(err).to.have.status(501);
+      });
+  });
+});
+
