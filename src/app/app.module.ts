@@ -12,7 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {CdkTableModule} from '@angular/cdk/table';
 
 import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
-import {CreateMeetUpService} from './create-meetup/create-meetup.service';
+
+import { CreateMeetUpService } from './create-meetup/create-meetup.service';
+import { GetMeetupsService } from './grid/get-meetups.service';
+
 
 
 import {
@@ -108,7 +111,7 @@ export class AppMaterialModule {}
     AppMaterialModule,
     Ng4GeoautocompleteModule.forRoot()
   ],
-  providers: [CreateMeetUpService],
+  providers: [CreateMeetUpService, GetMeetupsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

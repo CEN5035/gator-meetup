@@ -32,6 +32,24 @@ let response = {
     message: null
 };
 
+router.get('/searchMeetups', (req, res) => {
+    connection((db) => {
+        console.log(req);    
+        var query = { meetupName: new RegExp('^' + req.headers.search) };        
+        // var query = { meetupName: new RegExp('/' + req.headers.search + '/i') };        
+        db.collection('meetup')
+            .find(query)
+            .toArray()
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
 
 router.get('/getMeetups', (req, res) => {
     connection((db) => {
