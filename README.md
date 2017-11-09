@@ -10,4 +10,4 @@ Tech Stack : Angular, Angular Material, Node.js, Express, MongoDB
     npm install;
     node server.js  
 ## Documentation
-[Gator Meetup Wiki](wiki)
+[Gator Meetup Wiki](https://github.com/CEN5035/gator-meetup/wiki)
