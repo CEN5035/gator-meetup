@@ -45,6 +45,7 @@ export class CreateMeetupComponent {
   }
 
   onLocationSelection(selectedLoc: any) {
+    console.log(selectedLoc);
     this.selectedLoc=selectedLoc;
     this.hideLocationNext=false;
   }
@@ -62,6 +63,8 @@ export class CreateMeetupComponent {
     this.postData.location=this.selectedLoc.vicinity;
     this.postData.agenda=this.agenda;
     this.postData.meetupName=this.name;
+    this.postData.count=550;
+    this.postData.pictureUrl='http://quantifiedself.com/wp-content/uploads/2017/04/600_459142880.jpeg';
     this.postData.description=this.description;
     this.postData.coordinates=[this.selectedLoc.geometry.location.lat,this.selectedLoc.geometry.location.lng];
     this.postData.meetupOwner="Venkat" //session userid should be passed.
