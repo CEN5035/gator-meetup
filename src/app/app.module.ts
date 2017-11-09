@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {CdkTableModule} from '@angular/cdk/table';
 
 import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
-import { CreateMeetUpService } from './create-meetup/create-meetup.service';
+import {CreateMeetUpService} from './create-meetup/create-meetup.service';
 
 
 import {
