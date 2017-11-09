@@ -52,4 +52,9 @@ export class AppPage {
     element.all(by.tagName('button')).get(index).click();
     // browser.pause();
   }
+
+
+  navigateToSettings() {
+    return browser.get('/settings');
+  }
 }

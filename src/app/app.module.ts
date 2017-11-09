@@ -50,6 +50,8 @@ import {
 } from '@angular/material';
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { SettingsComponent } from './create-meetup-2/settings.component';
+import { EditComponent } from './create-meetup-2/edit/edit.component';
+import { PsersonService } from './create-meetup-2/person.service';
 // import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
@@ -86,7 +88,8 @@ import { SettingsComponent } from './create-meetup-2/settings.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  ]
+  ],
+  declarations: []
 })
 export class AppMaterialModule {}
 
@@ -95,7 +98,8 @@ export class AppMaterialModule {}
     AppComponent,
     GridComponent,
     CreateMeetupComponent,
-    SettingsComponent
+    SettingsComponent,
+    EditComponent
     // SettingsComponent
   ],
   imports: [
@@ -108,7 +112,7 @@ export class AppMaterialModule {}
     AppMaterialModule,
     Ng4GeoautocompleteModule.forRoot()
   ],
-  providers: [CreateMeetUpService],
+  providers: [CreateMeetUpService,PsersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

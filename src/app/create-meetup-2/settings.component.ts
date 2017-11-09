@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { PsersonService } from './person.service';
+import { userdetail } from './person.interface';
 
 @Component({
   selector: 'app-settings',
@@ -8,6 +10,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+user:userdetail={_id:' ',name :' ', UserID : ' ', Emailaddress:' ',
+Password :' ',Location: ' ',Hometown : ' ',Language : ' ',
+DOB : ' ',Gender: ' ', BIO : ' '} ;
 
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -21,7 +26,7 @@ export class SettingsComponent implements OnInit {
    ];
   selectedSettingsItem: String = this.settingsItems[0]['name'];
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private psersonService:PsersonService) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -33,6 +38,10 @@ export class SettingsComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+    this.psersonService.GetUser().subscribe(res=>{
+      this.user =res[0];
+      console.log(res);
+    })
   }
 
   selectSetting(index: number) {
