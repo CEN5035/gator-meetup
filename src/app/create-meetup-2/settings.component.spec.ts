@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardTitle, MatCardContent ,MatCard } from '@angular/material';
+import {FormBuilder, FormGroup, Validators ,ReactiveFormsModule,FormsModule} from '@angular/forms';
 
 import { SettingsComponent } from './settings.component';
 
@@ -8,7 +10,9 @@ describe('SettingsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsComponent ]
+      imports: [FormsModule,ReactiveFormsModule],
+      declarations: [ SettingsComponent, MatCardTitle, MatCardContent ,MatCard],
+      providers : []
     })
     .compileComponents();
   }));
