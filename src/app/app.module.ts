@@ -12,7 +12,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {CdkTableModule} from '@angular/cdk/table';
 
 import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
+
 import { CreateMeetUpService } from './create-meetup/create-meetup.service';
+import { GetMeetupsService } from './grid/get-meetups.service';
+
 
 
 import {
@@ -51,7 +54,10 @@ import {
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { SettingsComponent } from './create-meetup-2/settings.component';
 // import { SettingsComponent } from './settings/settings.component';
-
+import { EditComponent } from './create-meetup-2/edit/edit.component';
+import { PsersonService } from './create-meetup-2/person.service';
+// import { SettingsComponent } from './settings/settings.component';
+ 
 @NgModule({
   exports: [
     CdkTableModule,
@@ -86,6 +92,8 @@ import { SettingsComponent } from './create-meetup-2/settings.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+	
+  declarations: []
   ]
 })
 export class AppMaterialModule {}
@@ -96,6 +104,7 @@ export class AppMaterialModule {}
     GridComponent,
     CreateMeetupComponent,
     SettingsComponent
+	EditComponent
     // SettingsComponent
   ],
   imports: [
@@ -108,7 +117,7 @@ export class AppMaterialModule {}
     AppMaterialModule,
     Ng4GeoautocompleteModule.forRoot()
   ],
-  providers: [CreateMeetUpService],
+  providers: [CreateMeetUpService, GetMeetupsService,PsersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,6 +8,13 @@ describe('gator-meetup App', () => {
     page = new AppPage();
   });
 
+
+  
+  it('Create event button should open the create page', () => {
+    page.getCreateMeetupButton().click();
+    expect(browser.getCurrentUrl()).toContain('/create-meetup');
+  });
+
   it('Should display the page title correctly', () => {
     page.navigateToHome();
     expect(browser.getTitle()).toEqual('GatorMeetup');
@@ -142,4 +149,15 @@ describe('gator-meetup App', () => {
     expect(browser.getCurrentUrl()).toContain('/home');
   });
 
+  it('Should display the  settings page title correctly', () => {
+    page.navigateToSettings();
+    expect(browser.getTitle()).toEqual('GatorMeetup');
+  });
+
+
+
+
+ 
+
+  
 });
