@@ -6,7 +6,7 @@
   <div class="create-meetup"><a mat-raised-button color="warn" routerLink="/create-meetup" >Create a Meetup</a></div>
   
     <mat-grid-list cols="3" gutterSize="10px" rowHeight="300px">
-      <mat-grid-tile *ngFor="let meetup of meetups$ | async">
+      <mat-grid-tile *ngFor="let meetup of meetups$ | async; let i = index;" (click)="openDetailPage(meetup._id)">
         <mat-card mat-ripple style="padding: 0px; top:-20px;">
             <img flex [alt]="meetup.name" src="{{meetup.thumbUrl}}" width="100%"  height="250px">
             <mat-card-footer item-height="150px" style="padding-bottom: 25px; padding-left: 40px; padding-right: 40px;">

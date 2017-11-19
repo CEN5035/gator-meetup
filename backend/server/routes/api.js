@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient, assert = require('assert');
-const ObjectID = require('mongodb').ObjectID
+const ObjectID = require('mongodb').ObjectID;
 // Connect
 var db; 
 
@@ -49,6 +49,22 @@ router.get('/searchMeetups', (req, res) => {
         
         db.collection('meetup')
             .find(query)
+            .toArray()
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/getMeetupDetail', (req, res) => {
+    connection((db) => {
+        console.log(req);
+        db.collection('meetupDetail')
+            .find(ObjectID(req.headers._id))
             .toArray()
             .then((events) => {
                 response.data = events;
