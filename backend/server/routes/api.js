@@ -118,27 +118,71 @@ router.post('/users/signup', (req, res) => {
                         message: 'User already exist'
                     });
                 } else {
-                    let newUser = {
-                        name: req.body.name,
-                        email: req.body.email,
-                        location: req.body.email,
-                        hometown: req.body.hometown,
-                        language: req.body.language,
-                        birthday: req.body.birthday,
-                        gender: req.body.gender,
-                        bio: req.body.bio,
-                        password: req.body.password,
-                    };
+                    db.collection('counter')
+                        .findOne()
+                        .then((counter) => {
 
-                    var salt = bcrypt.genSaltSync(10);
-                    newUser.password = bcrypt.hashSync(newUser.password, salt);
+                            let newUser = {
+                                name: req.body.name,
+                                email: req.body.email,
+                                location: req.body.email,
+                                hometown: req.body.hometown,
+                                language: req.body.language,
+                                birthday: req.body.birthday,
+                                gender: req.body.gender,
+                                bio: req.body.bio,
+                                password: req.body.password,
+                                userId: 'U',
+                            };
 
-                    db.collection('users')
-                        .insertOne(newUser)
-                        .then((events) => {
-                            response.data = events;
-                            res.json(response);
-                            console.log(res);
+                            if (counter) {
+                                if (counter.count < 10) {
+                                    newUser.userId += '000' + counter.count;
+                                } else if (counter.count < 100) {
+                                    newUser.userId += '00' + counter.count;
+                                } else if (counter.count < 1000) {
+                                    newUser.userId += '0' + counter.count;
+                                } else {
+                                    newUser.userId += counter.count;
+                                }
+
+                            } else {
+                                newUser.userId += 1;
+                            }
+
+                            var salt = bcrypt.genSaltSync(10);
+                            newUser.password = bcrypt.hashSync(newUser.password, salt);
+
+                            db.collection('users')
+                                .insertOne(newUser)
+                                .then((success) => {
+                                    response.data = success;
+                                    res.json(response);
+                                    console.log(res);
+
+                                    if (!counter) {
+                                        db.collection('counter')
+                                            .insertOne({ count: 1 })
+                                            .then((success) => {
+                                                console.log(res);
+                                            })
+                                            .catch((err) => {
+                                                sendError(err, res);
+                                            });
+                                    } else {
+                                        db.collection('counter')
+                                            .findOneAndUpdate({ _id: counter._id }, { $inc: { "count": 1 } })
+                                            .then((success) => {
+                                                console.log(res);
+                                            })
+                                            .catch((err) => {
+                                                sendError(err, res);
+                                            });
+                                    }
+                                })
+                                .catch((err) => {
+                                    sendError(err, res);
+                                });
                         })
                         .catch((err) => {
                             sendError(err, res);
