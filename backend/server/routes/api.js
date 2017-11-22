@@ -39,8 +39,14 @@ router.get('/invalidURL', (req, res) => {
 router.get('/searchMeetups', (req, res) => {
     connection((db) => {
         console.log(req);    
-        var query = { meetupName: new RegExp('^' + req.headers.search) };        
-        // var query = { meetupName: new RegExp('/' + req.headers.search + '/i') };        
+        
+        var query = {$or:
+            [
+                { meetupName: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}},
+                {tags: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}}
+            ]
+        };        
+        
         db.collection('meetup')
             .find(query)
             .toArray()
