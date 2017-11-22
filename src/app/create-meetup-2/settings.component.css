@@ -1,0 +1,79 @@
+:host {
+  /* height: calc(100vh - 65px); */
+  width: 100%;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+mat-card {
+  height: 75vh;
+  /* width: 100%; */
+}
+
+.settings-container {
+  min-width: 150px;
+  max-width: 80vw;
+  margin: 0 auto;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.setting-menu, .settings-content {
+  height: 100%;
+}
+
+.settings-menu {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.settings-menu .settings-item {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #7C7B7B;
+  box-shadow: inset -3px 0 0 transparent;
+  transition: all 300ms ease-in;
+}
+
+.active-setting {
+  color: #214ECA !important;
+  box-shadow: inset -3px 0 0 #214ECA !important;
+}
+
+.settings-content {
+  width: 80%;
+}
+
+.setting-content-item {
+  height: 100%;
+  width: 100%;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.general-item {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.general-item-name {
+  width: 30%;
+  height: 100%;
+  font-weight: bold;
+  color: #333;
+}
+
+.general-item-value {
+  width: 70%;
+  height: 100%;
+}

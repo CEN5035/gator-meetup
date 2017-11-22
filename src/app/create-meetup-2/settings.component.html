@@ -1,0 +1,97 @@
+<mat-card>
+  <mat-card-title>Settings</mat-card-title>
+  <mat-card-content>
+    <div class="settings-container">
+      <div class="settings-menu">
+        <div class="settings-item" *ngFor="let setting of settingsItems; let i = index" (click)="selectSetting(i)" [ngClass]="{'active-setting' : selectedSettingsItem === setting.name}">
+          {{setting.name}}
+        </div>
+      </div>
+      <div class="settings-content">
+        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'General';then generalSettings"></div>
+        <ng-template #generalSettings>
+          <div class="setting-content-item">
+            <h3>
+                General Settings
+            </h3>
+            <div class="general-item">
+              <div class="general-item-name">Name: </div>
+              <div class="general-item-value">James</div>
+            </div>
+            <div class="general-item">
+              <div class="general-item-name">Email address: </div>
+              <div class="general-item-value">james.smith@gmail.com</div>
+            </div>
+            <div class="general-item">
+              <div class="general-item-name">Location: </div>
+              <div class="general-item-value">	Sunnyvale, CA</div>
+            </div>
+
+           
+            <div class="general-item">
+              <div class="general-item-name">
+                Hometown:</div>
+              <div class="general-item-value">	Sunnyvale, CA</div>
+            </div>
+
+
+             
+            <div class="general-item">
+              <div class="general-item-name">
+                Language:</div>
+              <div class="general-item-value">English</div>
+            </div>
+
+            <div class="general-item">
+              <div class="general-item-name">
+                Birthday:</div>
+              <div class="general-item-value">	May 5, 1992</div>
+            </div>
+
+            
+            <div class="general-item">
+              <div class="general-item-name">
+                Gender:</div>
+              <div class="general-item-value">Male</div>
+            </div>
+
+            
+            <div class="general-item">
+              <div class="general-item-name">
+                Bio:</div>
+              <div class="general-item-value">This is Me..</div>
+            </div>
+          </div>
+        </ng-template>
+
+
+        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'Profile';then profileSettings"></div>
+        <ng-template #profileSettings>
+          <div class="setting-content-item">
+              <h3>
+                  Profile Settings
+              </h3>
+          </div>
+
+
+          
+        </ng-template>
+
+        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'Others';then OtherSettings"></div>
+        <ng-template #OtherSettings>
+          <div class="setting-content-item">
+              <h3>
+                Other Settings
+              </h3>
+          </div>
+
+
+          
+        </ng-template>
+
+
+
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
