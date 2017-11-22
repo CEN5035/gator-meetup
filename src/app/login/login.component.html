@@ -10,11 +10,6 @@
             <label>Email</label>
             <input type="email" name="email" id="email" [(ngModel)]="userData.email" class="w3-input w3-border" placeholder="User Id"
               #emailField="ngModel" required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
-
-            <div *ngIf="emailField.errors && formSubmit" class="text-danger">
-              <span [hidden]="!emailField.errors.required">User Id is required</span>
-              <span [hidden]="!emailField.errors.pattern">Invalid Email</span>
-            </div>
           </div>
 
           <!-- Password -->
@@ -22,15 +17,10 @@
             <label>Password</label>
             <input type="password" name="password" id="password" [(ngModel)]="userData.password" class="w3-input w3-border" placeholder="Password"
               #passwordField="ngModel" required minlength="6" maxlength="64">
-
-            <div *ngIf="passwordField.errors && formSubmit" class="text-danger">
-              <span [hidden]="!passwordField.errors.required">Please set the password</span>
-              <span [hidden]="!passwordField.errors.minlength">password should be atleast 6 character long</span>
-            </div>
           </div>
 
           <div class="w3-container" style="text-align:right; margin-top:10px">
-            <button type="submit" class="w3-button w3-black" (click)="formSubmit = true">Login</button>
+            <button type="submit" class="w3-button w3-black">Login</button>
           </div>
         </form>
       </div>
