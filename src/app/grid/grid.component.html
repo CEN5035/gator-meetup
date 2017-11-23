@@ -8,7 +8,7 @@
     <mat-grid-list cols="3" gutterSize="10px" rowHeight="300px">
       <mat-grid-tile *ngFor="let meetup of meetups$ | async">
         <mat-card mat-ripple style="padding: 0px; top:-20px;">
-            <img flex [alt]="meetup.name" src="{{meetup.thumbUrl}}" width="100%"  height="250px">
+            <img flex [alt]="meetup.name" src="{{meetup.imagebase64}}" width="300px"  height="250px">
             <mat-card-footer item-height="150px" style="padding-bottom: 25px; padding-left: 40px; padding-right: 40px;">
               <span style="color: #505050; font-size: 18px; position: relative; top: 10px;">{{meetup.meetupName}}</span>
               <mat-icon style="float: right; position: relative; top: 12px;">star_border</mat-icon>                            
