@@ -15,14 +15,17 @@ export class CreateMeetupComponent {
   isLocationSet= false;
   isTopicSet= false;
   isNameSet= false;
+  isImageSet = false;
   locationForm: FormGroup;
   agendaForm: FormGroup;
   topicForm: FormGroup;
+  imageForm: FormGroup;
   postData: any = {};
   location = '';
   agenda = '';
   name = '';
   description = '';
+  image = '';
   hideLocationNext = true;
   selectedLoc : any;
   
@@ -37,6 +40,8 @@ export class CreateMeetupComponent {
     this.topicForm = fb.group({
       'name': [null, Validators.required],
       'description': [null, Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(60)])],
+    });
+    this.imageForm = fb.group({
     });
   }
 
@@ -58,18 +63,36 @@ export class CreateMeetupComponent {
     this.isNameSet = true;
   }
 
+  onImageClick() {
+    this.isImageSet = true;
+  }
+
+  convertImage($event) : void {
+    this.readImage($event.target);
+  }
+
+  readImage(inputValue: any): void {
+    console.log("readImage");
+    const file: File = inputValue.files[0];
+    const myReader: FileReader = new FileReader();
+    myReader.onloadend = (e) => {
+      this.image = myReader.result;
+      console.log(this.image);
+    };
+    myReader.readAsDataURL(file);    
+  }
+
   onSubmit() {
     this.submitted = true;
     this.postData.location=this.selectedLoc.vicinity;
     this.postData.agenda=this.agenda;
     this.postData.meetupName=this.name;
     this.postData.count=550;
+    this.postData.imagebase64=this.image;
     this.postData.thumbUrl='http://quantifiedself.com/wp-content/uploads/2017/04/600_459142880.jpeg';
     this.postData.description=this.description;
     this.postData.coordinates=[this.selectedLoc.geometry.location.lat,this.selectedLoc.geometry.location.lng];
     this.postData.meetupOwner="Venkat" //session userid should be passed.
     this.meetUpObj.createMeetUp(this.postData);
-
   }
-
 }
