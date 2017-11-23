@@ -27,8 +27,7 @@ export class CreateMeetupComponent {
   description = '';
   image = '';
   hideLocationNext = true;
-  selectedLoc : any;
-  
+  selectedLoc: any;
 
   constructor(private fb: FormBuilder, public meetUpObj: CreateMeetUpService) {
     this.locationForm = fb.group({
@@ -50,7 +49,6 @@ export class CreateMeetupComponent {
   }
 
   onLocationSelection(selectedLoc: any) {
-    console.log("%o", selectedLoc);
     this.selectedLoc=selectedLoc;
     this.hideLocationNext=false;
   }
@@ -72,7 +70,6 @@ export class CreateMeetupComponent {
   }
 
   readImage(inputValue: any): void {
-    console.log("readImage");
     const file: File = inputValue.files[0];
     const myReader: FileReader = new FileReader();
     myReader.onloadend = (e) => {
@@ -93,7 +90,14 @@ export class CreateMeetupComponent {
     this.postData.description=this.description;
     this.postData.coordinates=[this.selectedLoc.geometry.location.lat,this.selectedLoc.geometry.location.lng];
     this.postData.meetupOwner="Venkat" //session userid should be passed.
-    this.postData.locationDescription=this.selectedLoc.address_components[2].long_name + ", " + this.selectedLoc.address_components[4].long_name;
+    this.postData.meetupId = this.uniqueId();
+    this.postData.locationDescription = this.selectedLoc.address_components[2].long_name + ", " + this.selectedLoc.address_components[4].long_name;
     this.meetUpObj.createMeetUp(this.postData);
+  }
+
+  uniqueId() {
+    var i = new Date().getTime();
+    i = i & 0xffff; 
+    return i;
   }
 }

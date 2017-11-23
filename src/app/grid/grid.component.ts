@@ -29,8 +29,8 @@ export class GridComponent {
     this.searchTerms.next(term);
   }
 
-  onRowClicked(): void {
-
+  onRowClicked(id: string): void {
+    console.log(id);
   }
 
   ngOnInit(): void {
