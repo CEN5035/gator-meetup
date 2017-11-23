@@ -50,7 +50,7 @@ export class CreateMeetupComponent {
   }
 
   onLocationSelection(selectedLoc: any) {
-    console.log(selectedLoc);
+    console.log("%o", selectedLoc);
     this.selectedLoc=selectedLoc;
     this.hideLocationNext=false;
   }
@@ -93,6 +93,7 @@ export class CreateMeetupComponent {
     this.postData.description=this.description;
     this.postData.coordinates=[this.selectedLoc.geometry.location.lat,this.selectedLoc.geometry.location.lng];
     this.postData.meetupOwner="Venkat" //session userid should be passed.
+    this.postData.locationDescription=this.selectedLoc.address_components[2].long_name + ", " + this.selectedLoc.address_components[4].long_name;
     this.meetUpObj.createMeetUp(this.postData);
   }
 }
