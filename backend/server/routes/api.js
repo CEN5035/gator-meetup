@@ -152,7 +152,7 @@ router.post('/users/signup', (req, res) => {
                                 }
 
                             } else {
-                                newUser.userId += 1;
+                                newUser.userId += '000' + 1;
                             }
 
                             var salt = bcrypt.genSaltSync(10);
@@ -260,8 +260,8 @@ router.post('/users/forgot', (req, res, next) => {
                             let transporter = nodemailer.createTransport({
                                 service: 'gmail',
                                 auth: {
-                                    user: "", // generated ethereal user
-                                    pass: ""  // generated ethereal password
+                                    user: "noreplygatormeetup@gmail.com", // generated ethereal user
+                                    pass: "gatormeetup"  // generated ethereal password
                                 }
                             });
 
@@ -433,6 +433,266 @@ router.post('/users/islogin', authMiddleware, (req, res, next) => {
             });
     });
 });
+
+router.post('/updateData', (req, res) => {
+    console.log('Body', req.body);
+    // res.send('ok');
+    var data = req.body;
+    var valueType = req.body.valueType;
+    console.log('UserId', req.body.userId);
+
+    var newData;
+    var oldData;
+    switch (valueType) {
+        case "Emailaddress":
+            newData = {
+                $set: {
+                    email: req.body.value
+                }
+            }
+            oldData = {
+                email: req.body.originalValue
+            }
+            break;
+        case 'Name':
+            newData = {
+                $set: {
+                    name: req.body.value
+                }
+            }
+            oldData = {
+                name: req.body.originalValue
+            }
+            break;
+        case 'Location':
+            newData = {
+                $set: {
+                    location: req.body.value
+                }
+            }
+            oldData = {
+                location: req.body.originalValue
+            }
+            break;
+        case 'Hometown':
+            newData = {
+                $set: {
+                    hometown: req.body.value
+                }
+            }
+            oldData = {
+                hometown: req.body.originalValue
+            }
+
+
+            break;
+        case 'Language':
+            newData = {
+                $set: {
+                    language: req.body.value
+                }
+            }
+            oldData = {
+                language: req.body.originalValue
+            }
+
+            break;
+        case 'DOB':
+            newData = {
+                $set: {
+                    birthday: req.body.value
+                }
+            }
+            oldData = {
+                birthday: req.body.originalValue
+            }
+            break;
+        case 'Gender':
+            newData = {
+                $set: {
+                    gender: req.body.value
+                }
+            }
+            oldData = {
+                gender: req.body.originalValue
+            }
+    }
+
+
+    console.log(oldData);
+    console.log(newData);
+    connection((db) => {
+        db.collection('users')
+            .update({ userId: req.body.userId }, newData)
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+                // console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/getMeetup', (req, res) => {
+    connection((db) => {
+        db.collection("meetup").find({}).toArray(function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.send(result)
+            db.close();
+        });
+    });
+});
+
+router.get('/getUser/:userId', (req, res) => {
+    var UserID = req.params.userId;
+    console.log('Userid', UserID);
+    connection((db) => {
+        db.collection("users").find({ userId: UserID }).toArray(function (err, result) {
+            if (err) throw err;
+            console.log(result);
+            res.send(result)
+            db.close();
+        });
+    });
+});
+
+router.get('/addUser', (req, res) => {
+    var newUser = {
+
+        name: "Siddharth",
+        UserID: "5510",
+        Emailaddress: "sid@gmail.com",
+        Password: "112",
+        Location: "CA",
+        Hometown: "San Jose",
+        Language: "English",
+        DOB: "05-05-1992",
+        Gender: "Male",
+        BIO: " This is sid"
+    }
+    connection((db) => {
+        db.collection('user')
+            .insertOne(newUser)
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+                // console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/updateHometown', (req, res) => {
+    var newUser = {
+        $set: {
+            Hometown: "CABCD"
+        }
+    };
+    var user = { UserID: "5510" };
+    connection((db) => {
+        db.collection('user')
+            .update(user, newUser)
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+                console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/updateLocation', (req, res) => {
+    var newUser = {
+        $set: {
+            Location: "CA"
+        }
+    };
+    var user = { UserID: "1234" };
+    connection((db) => {
+        db.collection('user')
+            .update(user, newUser)
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+                console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+
+router.get('/updatePassword', (req, res) => {
+    var newUser = {
+        $set: {
+            Password: "Siddharth"
+        }
+    };
+    var user = { UserID: "1234" };
+    connection((db) => {
+        db.collection('user')
+            .update(user, newUser)
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+                console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/updatename', (req, res) => {
+    var newUser = {
+        $set: {
+            name: "Siddharth"
+        }
+    };
+    var user = { UserID: "1234" };
+    connection((db) => {
+        db.collection('user')
+            .update(user, newUser)
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+                console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/updateemail', (req, res) => {
+    var newUser = {
+        $set: {
+            Emailaddress: "Sith"
+        }
+    };
+    var user = { UserID: "1234" };
+    connection((db) => {
+        db.collection('user')
+            .update(user, newUser)
+            .then((events) => {
+                response.data = events;
+                res.json(response);
+                console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
 
 module.exports = router;
 

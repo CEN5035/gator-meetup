@@ -10,6 +10,7 @@ import { AuthGuard } from "./guards/auth.guard";
 
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { SettingsComponent } from './create-meetup-2/settings.component';
+import { EditComponent } from './create-meetup-2/edit/edit.component';
 // import {SettingsComponent} from './settings/settings.component';
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'forgot-password', component: ForgotComponent },
     { path: 'create-meetup', component: CreateMeetupComponent, canActivate: [AuthGuard] },
-    { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] }
+    { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+    { path: 'Edit/:display/:value', component: EditComponent, canActivate: [AuthGuard] }
     // { path: 'settings',  component: SettingsComponent }
 ];
 

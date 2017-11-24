@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { CommonService } from '../providers/common.service';
-import { ApiService } from '../providers/api.service';
-import { UserService } from '../providers/user.service';
+import { PsersonService } from './person.service';
+import { userdetail } from './person.interface';
 
 @Component({
   selector: 'app-settings',
@@ -12,6 +10,11 @@ import { UserService } from '../providers/user.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  user: userdetail = {
+    _id: ' ', name: ' ', UserID: ' ', Emailaddress: ' ',
+    Password: ' ', Location: ' ', Hometown: ' ', Language: ' ',
+    DOB: ' ', Gender: ' ', BIO: ' '
+  };
 
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -25,13 +28,7 @@ export class SettingsComponent implements OnInit {
   ];
   selectedSettingsItem: String = this.settingsItems[0]['name'];
 
-  userDetails = null;
-
-  constructor(private _formBuilder: FormBuilder, public common: CommonService,
-    public user: UserService,
-    private api: ApiService) {
-    this.userDetails = user._details;
-  }
+  constructor(private _formBuilder: FormBuilder, private psersonService: PsersonService) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -43,6 +40,10 @@ export class SettingsComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
     });
+    this.psersonService.GetUser().subscribe(res => {
+      this.user = res[0];
+      console.log(res);
+    })
   }
 
   selectSetting(index: number) {

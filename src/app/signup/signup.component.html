@@ -48,14 +48,18 @@
 
           <div class="">
             <label>Birthday</label>
-            <input type="text" name="birthday" id="birthday" [(ngModel)]="userData.birthday" class="w3-input" placeholder="Your birthday"
+            <input type="date" name="birthday" id="birthday" [(ngModel)]="userData.birthday" class="w3-input" placeholder="Your birthday"
               #birthdayField="ngModel" required>
           </div>
 
           <div class="">
             <label>Gender</label>
-            <input type="text" name="gender" id="gender" [(ngModel)]="userData.gender" class="w3-input" placeholder="Your gender" #genderField="ngModel"
-              required>
+            <select name="gender" id="gender" [(ngModel)]="userData.gender" class="w3-input" #genderField="ngModel" required>
+              <option value="" disabled selected>Choose an option</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+
           </div>
 
           <div class="">
