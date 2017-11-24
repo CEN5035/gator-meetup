@@ -1,0 +1,19 @@
+<div class="w3-container">
+  <div class="login-div">
+    <div class="w3-card-4" style="width: 30rem; padding:10px;">
+      <div class="card-body">
+        <h4 class="card-title text-center">Forgot</h4>
+        <hr>
+        <form #forgotForm="ngForm" (submit)="forgotForm.valid && forgotPassword()">
+          <div class="w3-container">
+            <label>Email</label>
+            <input type="email" name="f-email" class="w3-input" [(ngModel)]="email" #forgotField="ngModel" required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
+          </div>
+          <div class="w3-container" style="text-align:right">
+            <button type="submit" class="w3-button w3-black">Forgot</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -64,6 +64,7 @@ import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { SettingsComponent } from './create-meetup-2/settings.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ForgotComponent } from './forgot/forgot.component';
 // import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
@@ -112,6 +113,7 @@ export class AppMaterialModule { }
     SettingsComponent,
     LoginComponent,
     SignupComponent,
+    ForgotComponent,
 
     // SettingsComponent
   ],

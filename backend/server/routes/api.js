@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
+const nodemailer = require('nodemailer');
+const uuidv4 = require('uuid/v4');
 const MongoClient = require('mongodb').MongoClient, assert = require('assert');
 const ObjectID = require('mongodb').ObjectID
 
@@ -12,6 +14,7 @@ var db;
 
 // Connection URL
 var url = process.env.MONGO_DB_DEV_URI
+const SERVER_URL = 'http://localhost:8000/';
 
 const tokenExpireTime = '1h';
 
@@ -228,6 +231,176 @@ router.post('/users/login', (req, res) => {
             });
     });
 });
+
+
+router.post('/users/forgot', (req, res, next) => {
+    if (!req.body.email) {
+        res.status(400);
+        return res.json({
+            success: false,
+            message: 'Invalid credencials'
+        });
+    } else {
+        connection((db) => {
+            db.collection('users')
+                .findOne({ email: req.body.email })
+                .then((user) => {
+                    if (!user) {
+                        res.status(400);
+                        return res.json({
+                            success: false,
+                            message: 'User not found'
+                        });
+                    } else {
+                        const email = req.body.email;
+                        nodemailer.createTestAccount((err, account) => {
+                            // create reusable transporter object using the default SMTP transport
+                            let transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                    user: "", // generated ethereal user
+                                    pass: ""  // generated ethereal password
+                                }
+                            });
+
+                            // setup email data with unicode symbols
+                            const token = uuidv4();
+                            console.log(token);
+                            let mailOptions = {
+                                from: '"Forgot Password" <contact@gatormeetup.com>', // sender address
+                                to: email, // list of receivers
+                                subject: 'Hello ✔', // Subject line
+                                html: user.name + '<br>' +
+                                    '<a href="' + SERVER_URL + 'users/reset/' + token + '">Click here to reset password</a>'
+                            };
+
+                            // send mail with defined transport object
+                            transporter.sendMail(mailOptions, (error, info) => {
+                                if (error) {
+                                    throw error;
+                                }
+                                var newToken = {
+                                    token: token,
+                                    userId: user._id
+                                };
+
+                                db.collection('token')
+                                    .insertOne(newToken);
+
+                                return res.json({
+                                    success: true,
+                                    message: 'A password reset link has been sent to your email.'
+                                });
+
+                            });
+                        });
+                    }
+                })
+                .catch((err) => {
+                    sendError(err, res);
+                });
+        });
+    }
+
+});
+
+router.get('/users/reset/:token', (req, res, next) => {
+    console.log(req.params.token);
+    if (!req.params.token) {
+        res.status(400);
+        return res.json({
+            error: true,
+            message: 'Reset token not found'
+        });
+    } else {
+
+        connection((db) => {
+            db.collection('token')
+                .findOne({ token: req.params.token })
+                .then((tokenInfo) => {
+                    if (!tokenInfo) {
+                        res.status(400);
+                        return res.json({
+                            error: true,
+                            message: 'Token not found'
+                        });
+                    } else {
+                        var currentTime = new Date();
+                        var tokenExpireTime = new Date(tokenInfo.createdAt);
+                        tokenExpireTime.setDate(tokenExpireTime.getDate() + 1);
+                        if (currentTime.getTime() > tokenExpireTime.getTime()) {
+                            res.status(400);
+                            db.collection('token').remove({ userId: tokenInfo.userId });
+                            return res.json({
+                                error: true,
+                                message: 'Password reset link has been expired'
+                            });
+                        } else {
+                            res.render('password-reset', {
+                                token: tokenInfo.token,
+                                error: '',
+                                redirectUrl: SERVER_URL + 'users/reset/' + tokenInfo.token
+                            });
+                        }
+                    }
+                })
+                .catch((err) => {
+                    sendError(err, res);
+                });
+        });
+
+    }
+
+});
+
+
+router.post('/users/reset/:token', (req, res, next) => {
+    console.log(req.params.token);
+    console.log(req.body.password);
+
+    let password = req.body.password;
+
+    if (!req.body.password) {
+        res.render('password-reset', {
+            token: req.params.token,
+            error: 'Please enter password',
+            redirectUrl: SERVER_URL + 'users/reset/' + req.params.token
+        });
+    } else if (req.body.password.length < 6) {
+        res.render('password-reset', {
+            token: req.params.token,
+            error: 'Password at least 6 characters long',
+            redirectUrl: SERVER_URL + 'users/reset/' + req.params.token
+        });
+    } else {
+        connection((db) => {
+            db.collection('token')
+                .findOne({ token: req.params.token })
+                .then((tokenInfo) => {
+                    bcrypt.genSalt(10, function (err, salt) {
+                        bcrypt.hash(password, salt, function (err, hash) {
+
+                            db.collection('users')
+                                .update({ _id: tokenInfo.userId }, { $set: { password: hash } })
+                                .then((success) => {
+                                    db.collection('token').remove({ userId: tokenInfo.userId });
+                                    res.render('response');
+                                })
+                                .catch((err) => {
+                                    sendError(err, res);
+                                });
+                        })
+                    })
+                })
+                .catch((err) => {
+                    sendError(err, res);
+                });
+        });
+    }
+
+});
+
+
 module.exports = router;
 
 // Without wrapped doesnt include status.
