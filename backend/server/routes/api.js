@@ -130,7 +130,7 @@ router.post('/users/signup', (req, res) => {
                             let newUser = {
                                 name: req.body.name,
                                 email: req.body.email,
-                                location: req.body.email,
+                                location: req.body.location,
                                 hometown: req.body.hometown,
                                 language: req.body.language,
                                 birthday: req.body.birthday,

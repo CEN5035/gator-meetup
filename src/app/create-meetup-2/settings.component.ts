@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { CommonService } from '../providers/common.service';
+import { ApiService } from '../providers/api.service';
+import { UserService } from '../providers/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,14 +18,20 @@ export class SettingsComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   settingsItems: Object[] = [
-    { name: 'General'},
-    { name: 'Profile'},
-    { name: 'Others'},
-    
-   ];
+    { name: 'General' },
+    { name: 'Profile' },
+    { name: 'Others' },
+
+  ];
   selectedSettingsItem: String = this.settingsItems[0]['name'];
 
-  constructor(private _formBuilder: FormBuilder) { }
+  userDetails = null;
+
+  constructor(private _formBuilder: FormBuilder, public common: CommonService,
+    public user: UserService,
+    private api: ApiService) {
+    this.userDetails = user._details;
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({

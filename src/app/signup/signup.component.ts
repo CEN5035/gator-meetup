@@ -35,8 +35,8 @@ export class SignupComponent implements OnInit {
     this.api.post('users/signup', this.userData)
       .subscribe(res => {
         console.log(res);
-        alert('User has been created');
-        this.router.navigate(['/home']);
+        alert('User has been created, you can login with your credentials');
+        this.router.navigate(['/login']);
       }, err => {
         console.log(err);
       });
