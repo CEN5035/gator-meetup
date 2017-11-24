@@ -7,6 +7,8 @@ const uuidv4 = require('uuid/v4');
 const MongoClient = require('mongodb').MongoClient, assert = require('assert');
 const ObjectID = require('mongodb').ObjectID
 
+const authMiddleware = require('../../middlewares/auth.middleware');
+
 const bcrypt = require('bcryptjs');
 
 // Connect
@@ -400,6 +402,37 @@ router.post('/users/reset/:token', (req, res, next) => {
 
 });
 
+
+router.post('/users/islogin', authMiddleware, (req, res, next) => {
+
+    console.log(req.decoded);
+    connection((db) => {
+        db.collection('users')
+            .findOne({ email: req.decoded.data.email })
+            .then((user) => {
+                console.log(user);
+                if (!user) {
+                    res.status(400);
+                    return res.json({
+                        success: false,
+                        data: null,
+                        message: 'User not exist'
+                    });
+                } else {
+                    user.password = '';
+                    res.status(200);
+                    return res.json({
+                        success: true,
+                        data: user,
+                        message: 'Continue...'
+                    });
+                }
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
 
 module.exports = router;
 
