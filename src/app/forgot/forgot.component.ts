@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../providers/api.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-forgot',
@@ -9,8 +10,9 @@ import { ApiService } from '../providers/api.service';
 export class ForgotComponent implements OnInit {
 
   email = '';
+  formSubmit = false;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,6 +22,7 @@ export class ForgotComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         alert(res.message);
+        this.router.navigate(['/login']);
       }, err => {
         console.log(err);
         alert(JSON.parse(err._body).message);

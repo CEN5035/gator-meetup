@@ -277,6 +277,7 @@ router.post('/users/forgot', (req, res, next) => {
                             };
 
                             // send mail with defined transport object
+                            process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
                             transporter.sendMail(mailOptions, (error, info) => {
                                 if (error) {
                                     throw error;
