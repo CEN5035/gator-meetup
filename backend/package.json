@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node ./node_modules/mocha/bin/mocha"
+
+    "test": "node ./node_modules/mocha/bin/mocha"    
   },
   "author": "",
   "license": "ISC",
@@ -305,6 +306,7 @@
     "preserve": "^0.2.0",
     "private": "^0.1.8",
     "jsonwebtoken": "^8.0.1",
+
     "process-nextick-args": "^1.0.7",
     "progress": "^2.0.0",
     "proxy-addr": "^2.0.2",

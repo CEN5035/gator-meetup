@@ -14,11 +14,13 @@ import { UserService } from './providers/user.service';
 /* Guards */
 import { AuthGuard } from "./guards/auth.guard";
 
+
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CdkTableModule } from '@angular/cdk/table';
+
 
 import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
 
@@ -68,6 +70,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { EditComponent } from './create-meetup-2/edit/edit.component';
 import { PsersonService } from './create-meetup-2/person.service';
 
+import { ShowMeetupComponent } from './show-meetup/show-meetup.component';
 // import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
@@ -108,6 +111,7 @@ import { PsersonService } from './create-meetup-2/person.service';
 })
 export class AppMaterialModule { }
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -118,6 +122,7 @@ export class AppMaterialModule { }
     SignupComponent,
     ForgotComponent,
     EditComponent,
+
     // SettingsComponent
   ],
   imports: [
@@ -136,6 +141,7 @@ export class AppMaterialModule { }
     UserService,
     PsersonService,
     AuthGuard,],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

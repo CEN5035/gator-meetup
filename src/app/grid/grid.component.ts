@@ -29,6 +29,11 @@ export class GridComponent {
     this.searchTerms.next(term);
   }
 
+
+  onRowClicked(id: string): void {
+    console.log(id);
+  }
+
   ngOnInit(): void {
     this.meetups$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term

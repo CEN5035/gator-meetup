@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PsersonService } from './person.service';
 import { userdetail } from './person.interface';
 
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -15,6 +16,7 @@ export class SettingsComponent implements OnInit {
     Password: ' ', Location: ' ', Hometown: ' ', Language: ' ',
     DOB: ' ', Gender: ' ', BIO: ' '
   };
+
 
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -44,6 +46,7 @@ export class SettingsComponent implements OnInit {
       this.user = res[0];
       console.log(res);
     })
+
   }
 
   selectSetting(index: number) {

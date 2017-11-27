@@ -22,6 +22,7 @@ const routes: Routes = [
     { path: 'create-meetup', component: CreateMeetupComponent, canActivate: [AuthGuard] },
     { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
     { path: 'Edit/:display/:value', component: EditComponent, canActivate: [AuthGuard] }
+
     // { path: 'settings',  component: SettingsComponent }
 ];
 
@@ -30,3 +31,4 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

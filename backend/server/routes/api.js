@@ -21,6 +21,7 @@ const SERVER_URL = 'http://localhost:8000/';
 const tokenExpireTime = '1h';
 
 
+
 // Use connect method to connect to the server
 var mongo_connection = url;
 const connection = (closure) => {
@@ -45,20 +46,21 @@ let response = {
 };
 
 router.get('/invalidURL', (req, res) => {
-    sendError(req, res);
+    sendError(req,res);
 });
 
 router.get('/searchMeetups', (req, res) => {
     connection((db) => {
-        console.log(req);
 
-        var query = {
-            $or:
-                [
-                    { meetupName: { $regex: new RegExp('.*?' + req.headers.search + '.*?'), $options: "ix" } },
-                    { tags: { $regex: new RegExp('.*?' + req.headers.search + '.*?'), $options: "ix" } }
-                ]
-        };
+        console.log(req);    
+        
+        var query = {$or:
+            [
+                { meetupName: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}},
+                {tags: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}}
+            ]
+        };        
+        
 
         db.collection('meetup')
             .find(query)
@@ -105,7 +107,6 @@ router.post('/postMeetup', (req, res) => {
             });
     });
 });
-
 
 router.post('/users/signup', (req, res) => {
     console.log(req.body);
@@ -694,22 +695,7 @@ router.get('/updateemail', (req, res) => {
     });
 });
 
-
 module.exports = router;
 
-// Without wrapped doesnt include status.
-// get meetups list 
-// router.get('/getMeetups', function (req, res) {
-//     db.collection('meetup').find().toArray(function(err, results) {
-//         console.log(results)
-//         res.send(results);
-//     });
-//   });
 
-// post meetup 
-// router.post('/postMeetup', function (req, res) {
-//       db.collection('meetup').insertOne(req.body, (err, result) => {
-//       if (err) return console.log(err);
-//       console.log(result);
-//     })
-//   });
+
