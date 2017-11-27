@@ -8,7 +8,7 @@
         <ul class="w3-ul w3-margin-top" *ngIf="!submited">
           <li>
               <div class="create-meetup-step-alignment">
-                STEP 1 OF 4
+                STEP 1 OF 5
               </div>
               <div>
                 <div class="create-meetup-image-alignment">
@@ -30,7 +30,7 @@
           </li>
           <li *ngIf="isLocationSet">
             <div class="create-meetup-step-alignment">
-                STEP 2 OF 4
+                STEP 2 OF 5
             </div>
             <div>
               <div class="create-meetup-image-alignment">
@@ -51,7 +51,7 @@
           </li>
           <li *ngIf="isTopicSet">
             <div class="create-meetup-step-alignment">
-                  STEP 3 OF 4
+                  STEP 3 OF 5
             </div>
             <div>
               <div class="create-meetup-image-alignment">
@@ -76,11 +76,31 @@
               </form>
             </div>
           </li>
-          <li></li>
+          <li *ngIf="isNameSet">
+              <div class="create-meetup-step-alignment">
+                  STEP 4 OF 5
+              </div>
+              <div>
+                  <div class="create-meetup-image-alignment">
+                      <img src="assets/create-meetup/image.png" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
+                  </div>
+                  <form [formGroup]="imageForm">                      
+                  <div class="create-meetup-question-alignment">
+                      <h3>Add an image that describes your Meetup</h3>
+                  </div>
+                  <div>
+                    <input class="w3-border create-meetup-textbox" type="file" name="student_img"  accept="image/*" (change)="convertImage($event)"/> 
+                  </div>   
+                  <div>
+                      <button class="raised-button"  mat-raised-button color="primary" (click)="onImageClick()">Next</button>
+                  </div>
+                  </form>
+              </div>      
+          </li>
         </ul>
-        <div *ngIf="isNameSet">
+        <div *ngIf="isImageSet">
           <div class="create-meetup-step-alignment">
-            STEP 4 OF 4
+            STEP 5 OF 5
           </div>
           <div>
             <div class="create-meetup-image-alignment">

@@ -53,6 +53,7 @@ import {
 } from '@angular/material';
 import { CreateMeetupComponent } from './create-meetup/create-meetup.component';
 import { SettingsComponent } from './create-meetup-2/settings.component';
+import { ShowMeetupComponent } from './show-meetup/show-meetup.component';
 // import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
@@ -89,7 +90,8 @@ import { SettingsComponent } from './create-meetup-2/settings.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  ]
+  ],
+  declarations: [ShowMeetupComponent]
 })
 export class AppMaterialModule {}
 
