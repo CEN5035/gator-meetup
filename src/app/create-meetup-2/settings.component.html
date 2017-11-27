@@ -1,0 +1,118 @@
+<mat-card>
+  <mat-card-title>Settings</mat-card-title>
+  <mat-card-content>
+    <div class="settings-container">
+      <div class="settings-menu">
+        <div class="settings-item" *ngFor="let setting of settingsItems; let i = index" (click)="selectSetting(i)" [ngClass]="{'active-setting' : selectedSettingsItem === setting.name}">
+          {{setting.name}}
+        </div>
+      </div>
+      <div class="settings-content">
+        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'General';then generalSettings"></div>
+        <ng-template #generalSettings>
+          <div class="setting-content-item">
+            <h3>
+                General Settings
+            </h3>
+            <div class="general-item">
+              <div class="general-item-name">Name: </div>
+              <div class="general-item-value">{{user?.name}}
+                <a id="name" [routerLink]="['/Edit','Name', user?.name]" >Edit</a>
+              </div>
+            </div>
+            <div class="general-item">
+              <div class="general-item-name">Emailaddress: </div>
+              <div class="general-item-value">{{user?.email}}
+                <a [routerLink]="['/Edit','Emailaddress', user?.email]" >Edit</a>
+              </div>
+            </div>
+            <div class="general-item">
+              <div class="general-item-name">Location: </div>
+              <div class="general-item-value">	{{user?.location}}
+                <a [routerLink]="['/Edit','Location' ,user?.location]" >Edit</a>
+              </div>
+
+            </div>
+
+           
+            <div class="general-item">
+              <div class="general-item-name">
+                Hometown:</div>
+              <div class="general-item-value">	{{user?.hometown}}
+                <a [routerLink]="['/Edit','Hometown', user?.hometown]" >Edit</a>
+              </div>
+            </div>
+
+
+             
+            <div class="general-item">
+              <div class="general-item-name">
+                Language:</div>
+              <div class="general-item-value">{{user?.language}}
+                <a [routerLink]="['/Edit','Language' ,user?.language]" >Edit</a>
+              </div>
+
+            </div>
+
+            <div class="general-item">
+              <div class="general-item-name">
+                DOB:</div>
+              <div class="general-item-value">{{user?.birthday}}
+                <a [routerLink]="['/Edit','DOB', user?.birthday]" >Edit</a>
+              </div>
+
+            </div>
+
+            
+            <div class="general-item">
+              <div class="general-item-name">
+                Gender:</div>
+              <div class="general-item-value">{{user?.gender}}
+                <a [routerLink]="['/Edit','Gender' ,user?.gender]" >Edit</a>
+              </div>
+
+            </div>
+
+            
+            <div class="general-item">
+              <div class="general-item-name">
+                BIO:</div>
+              <div class="general-item-value">{{user?.bio}}
+                <a [routerLink]="['/Edit','BIO' ,user?.bio]" >Edit</a>
+              </div>
+
+            </div>
+          </div>
+        </ng-template>
+
+
+        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'Profile';then profileSettings"></div>
+        <ng-template #profileSettings>
+          <div class="setting-content-item">
+              <h3>
+                  Profile Settings
+              </h3>
+          </div>
+
+
+          
+        </ng-template>
+
+        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'Others';then OtherSettings"></div>
+        <ng-template #OtherSettings>
+          <div class="setting-content-item">
+              <h3>
+                Other Settings
+              </h3>
+          </div>
+
+
+          
+        </ng-template>
+
+
+
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
