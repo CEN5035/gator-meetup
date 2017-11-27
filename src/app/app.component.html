@@ -1,10 +1,21 @@
-<mat-toolbar color="primary" class="home-toolbar" >  
-      <span> <a routerLink="/home"><img class="home-banner" src="assets/gator_meetup_logo.png" /></a></span>
-      <span class="fill-space"></span>      
-      <span class="header-right">
-        <i class="material-icons icon-32" >explore</i>
-        <a class="settings-nav" routerLink="/settings"><i class="material-icons icon-32" >account_circle</i></a>
-      </span>
+
+<mat-toolbar color="primary" class="home-toolbar">
+  <span>
+    <a routerLink="/home">
+      <img class="home-banner" src="assets/gator_meetup_logo.png" />
+    </a>
+  </span>
+  <span class="fill-space"></span>
+  <span class="header-right">
+    <a href="javascript:void(0)" routerLink="/login" *ngIf="!user._token">Login</a>
+    <a href="javascript:void(0)" routerLink="/signup" *ngIf="!user._token">Signup</a>
+    <a href="javascript:void(0)" (click)="logout()" *ngIf="user._token">Logout</a>
+    <i class="material-icons icon-32" *ngIf="user._token">explore</i>
+    <a class="settings-nav" routerLink="/settings" *ngIf="user._token">
+      <i class="material-icons icon-32">account_circle</i>
+    </a>
+  </span>
+
 </mat-toolbar>
 
 <router-outlet></router-outlet>
