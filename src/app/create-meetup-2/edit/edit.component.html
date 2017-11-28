@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title>Edit {{Name}}</mat-card-title>
+  <mat-card-content>
+    <div class="settings-container">
+      <div class="settings-menu">
+        <div class="settings-item active-setting">
+          <div  style="text-align:center; height:450px;">
+              {{Name}} :
+              <input type="text" [(ngModel)]="Value" />
+             <button (click)="update()">Update</button>
+             <button (click)="Navigatebook()">Cancel</button>
+          </div>
+         
+        </div>
+      </div>
+     
+    </div>
+  </mat-card-content>
+</mat-card>

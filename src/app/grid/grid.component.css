@@ -1,0 +1,14 @@
+.create-meetup  {
+    float: right;
+    top: -52px;
+    position: relative;
+    left: -7px;
+}
+
+.grid-inner-div {
+    padding-left: 15%;
+    padding-right: 15%;
+    background: #E5E5E5;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
