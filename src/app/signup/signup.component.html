@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="signup-div">
+    <div class="w3-card-4" style="width: 30rem;padding:15px">
+      <div class="">
+        <h4 class="">Signup</h4>
+        <hr>
+        <form #loginForm="ngForm" (submit)="loginForm.valid && doSignup()">
+
+          <!-- Name -->
+          <div class="">
+            <label>Name</label>
+            <input type="text" name="name" id="name" [(ngModel)]="userData.name" class="w3-input" placeholder="Your name" #nameField="ngModel"
+              required>
+          </div>
+
+          <!-- Email -->
+          <div class="">
+            <label>Email</label>
+            <input type="email" name="email" id="email" [(ngModel)]="userData.email" class="w3-input" placeholder="User Id" #emailField="ngModel"
+              required pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$">
+          </div>
+
+          <!-- Password -->
+          <div class="">
+            <label>Password</label>
+            <input type="password" name="password" id="password" [(ngModel)]="userData.password" class="w3-input" placeholder="Password"
+              #passwordField="ngModel" required minlength="6" maxlength="64">
+          </div>
+
+          <div class="">
+            <label>Location</label>
+            <input type="text" name="location" id="location" [(ngModel)]="userData.location" class="w3-input" placeholder="Your location"
+              #locationField="ngModel" required>
+          </div>
+
+          <div class="">
+            <label>Hometown</label>
+            <input type="text" name="hometown" id="hometown" [(ngModel)]="userData.hometown" class="w3-input" placeholder="Your hometown"
+              #hometownField="ngModel" required>
+          </div>
+
+          <div class="">
+            <label>Language</label>
+            <input type="text" name="language" id="language" [(ngModel)]="userData.language" class="w3-input" placeholder="Your language"
+              #languageField="ngModel" required>
+          </div>
+
+
+          <div class="">
+            <label>Birthday</label>
+            <input type="date" name="birthday" id="birthday" [(ngModel)]="userData.birthday" class="w3-input" placeholder="Your birthday"
+              #birthdayField="ngModel" required>
+          </div>
+
+          <div class="">
+            <label>Gender</label>
+            <select name="gender" id="gender" [(ngModel)]="userData.gender" class="w3-input" #genderField="ngModel" required>
+              <option value="" disabled selected>Choose an option</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+
+          </div>
+
+          <div class="">
+            <label>Bio</label>
+            <input type="text" name="bio" id="bio" [(ngModel)]="userData.bio" class="w3-input" placeholder="Your bio" #bioField="ngModel"
+              required>
+          </div>
+
+          <div class="w3-container" style="text-align:right; margin-top:10px">
+            <button type="submit" class="w3-button w3-black">Signup</button>
+          </div>
+          <p>Already have an account?
+            <a href="javascript:void(0)" routerLink="/login">login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
