@@ -16,22 +16,31 @@
             </h3>
             <div class="general-item">
               <div class="general-item-name">Name: </div>
-              <div class="general-item-value">James</div>
+              <div class="general-item-value">{{user?.name}}
+                <a id="name" [routerLink]="['/Edit','Name', user?.name]" >Edit</a>
+              </div>
             </div>
             <div class="general-item">
-              <div class="general-item-name">Email address: </div>
-              <div class="general-item-value">james.smith@gmail.com</div>
+              <div class="general-item-name">Emailaddress: </div>
+              <div class="general-item-value">{{user?.email}}
+                <a [routerLink]="['/Edit','Emailaddress', user?.email]" >Edit</a>
+              </div>
             </div>
             <div class="general-item">
               <div class="general-item-name">Location: </div>
-              <div class="general-item-value">	Sunnyvale, CA</div>
+              <div class="general-item-value">	{{user?.location}}
+                <a [routerLink]="['/Edit','Location' ,user?.location]" >Edit</a>
+              </div>
+
             </div>
 
            
             <div class="general-item">
               <div class="general-item-name">
                 Hometown:</div>
-              <div class="general-item-value">	Sunnyvale, CA</div>
+              <div class="general-item-value">	{{user?.hometown}}
+                <a [routerLink]="['/Edit','Hometown', user?.hometown]" >Edit</a>
+              </div>
             </div>
 
 
@@ -39,27 +48,39 @@
             <div class="general-item">
               <div class="general-item-name">
                 Language:</div>
-              <div class="general-item-value">English</div>
+              <div class="general-item-value">{{user?.language}}
+                <a [routerLink]="['/Edit','Language' ,user?.language]" >Edit</a>
+              </div>
+
             </div>
 
             <div class="general-item">
               <div class="general-item-name">
-                Birthday:</div>
-              <div class="general-item-value">	May 5, 1992</div>
+                DOB:</div>
+              <div class="general-item-value">{{user?.birthday}}
+                <a [routerLink]="['/Edit','DOB', user?.birthday]" >Edit</a>
+              </div>
+
             </div>
 
             
             <div class="general-item">
               <div class="general-item-name">
                 Gender:</div>
-              <div class="general-item-value">Male</div>
+              <div class="general-item-value">{{user?.gender}}
+                <a [routerLink]="['/Edit','Gender' ,user?.gender]" >Edit</a>
+              </div>
+
             </div>
 
             
             <div class="general-item">
               <div class="general-item-name">
-                Bio:</div>
-              <div class="general-item-value">This is Me..</div>
+                BIO:</div>
+              <div class="general-item-value">{{user?.bio}}
+                <a [routerLink]="['/Edit','BIO' ,user?.bio]" >Edit</a>
+              </div>
+
             </div>
           </div>
         </ng-template>

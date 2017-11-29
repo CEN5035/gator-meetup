@@ -15,4 +15,7 @@ export class CreateMeetUpService {
     let options = new RequestOptions( {method: RequestMethod.Post, headers: headers });
      return this._http.post("http://localhost:8000/postMeetup",reqBody,options).subscribe(res => {});
   }
+
 }
+
+

@@ -1,4 +1,5 @@
 # GatorMeetup
+
 Website to organize events within UF  
 Tech Stack : Angular, Angular Material, Node.js, Express, MongoDB
 
@@ -21,6 +22,7 @@ apt-get install -y nodejs
     npm install;
     ng serve -o
 #### Backend
+
     cd backend;
     npm install;
     node server.js  
