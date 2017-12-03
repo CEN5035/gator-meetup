@@ -3,6 +3,7 @@ import { GetMeetupsService } from './get-meetups.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { of } from 'rxjs/observable/of';
+import { Router, ActivatedRoute } from '@angular/router';
 import {
   debounceTime, distinctUntilChanged, switchMap, startWith
 } from 'rxjs/operators';
@@ -20,7 +21,7 @@ export class GridComponent {
   meetups$: Observable<Object>;
   private searchTerms = new Subject<string>();
 
-  constructor(public meetupsService: GetMeetupsService) {
+  constructor(public meetupsService: GetMeetupsService, private router: Router) {
     this.meetups$ = meetupsService.getMeetups();
   }
 
@@ -32,6 +33,8 @@ export class GridComponent {
 
   onRowClicked(id: string): void {
     console.log(id);
+    window.localStorage.setItem('meetup', id);
+    this.router.navigate(['/show-meetup']);
   }
 
   ngOnInit(): void {
