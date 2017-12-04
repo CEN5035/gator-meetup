@@ -28,4 +28,13 @@ export class GetMeetupsService {
      return this._http.get("http://localhost:8000/searchMeetups", options).map(result => this.result = result.json().data);
   }
 
+  searchNearbyMeetups(searchTerm, coordinates): Observable<Object> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'x-www-form-urlencoded');
+    headers.append('search', searchTerm);
+    headers.append('coordinates', coordinates[0] + "," + coordinates[1]);
+    let options = new RequestOptions( {method: RequestMethod.Get, headers: headers });
+    return this._http.get("http://localhost:8000/searchNearbyMeetups", options).map(result => this.result = result.json().data);
+  }
+
 }

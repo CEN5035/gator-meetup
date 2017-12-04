@@ -75,6 +75,43 @@ router.get('/searchMeetups', (req, res) => {
     });
 });
 
+router.get('/searchNearbyMeetups', (req, res) => {
+    connection((db) => {
+
+        var query = {$or:
+            [
+                { meetupName: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}},
+                {tags: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}}
+            ]
+        };
+
+        let coordinates = req.headers.coordinates.split(',').map(function (data) {return parseFloat(data);});
+
+        console.log(coordinates);
+
+        // distances are all in radians, so we divide by 3,963.2 for miles and 6,378.1 for Km
+
+        db.command({
+            geoNear : "meetup",
+            maxDistance : 10/3963.2,
+            near: coordinates,
+            spherical: true,
+            query: query,
+            limit : 30
+         })
+         .then((events) => {
+            // console.log("%o", events.results);
+            response.data = events.results.map(function (data) {return data.obj;});
+            res.json(response);
+        })
+         .catch((err) => {
+            console.log("%o", err);
+            sendError(err, res);
+        });
+
+    });
+});
+
 
 router.get('/getMeetups', (req, res) => {
     connection((db) => {
