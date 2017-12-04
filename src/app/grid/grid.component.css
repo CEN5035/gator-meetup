@@ -15,10 +15,10 @@
 
 .search-box, #search_places {
     height:2.8em;
-    width:40%;
+    width:70%;
     margin-bottom:10px;
     display: inline-block!important;
-    
+    color: #868484;
 }
 
 .location-box {
@@ -32,14 +32,16 @@
 
 .searchBtn {
     position: relative;
-    left: -428px;
-    top: -62px;
+    left: -367px;
+    top: -63px;
+    width : 13% !important;
 }
 
-.searchWrapper {
-    display: inline-block; width: 31%;
+.searchWrapper[_ngcontent-c3] {
+    display: inline-block;
+    width: 31%;
     position: relative;
-    left: 200px;
+    left: 80px;
     top: -15px;
 }
 
@@ -52,4 +54,10 @@
 
 .searchBar {
     margin-top: 30px;
+    left: 106px;
+    position: relative;
+}
+
+.meetupTile, .mat-card {
+    color: black;
 }

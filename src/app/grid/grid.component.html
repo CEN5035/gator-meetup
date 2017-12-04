@@ -1,11 +1,11 @@
 <div class="searchBar">
     <div class="searchWrapper">
-        <input class="search-box" #searchBox id="search-box" type="text" placeholder="Search" />                 
+        <input class="search-box" #searchBox id="search-box" type="text" placeholder="What are you looking for?" />                 
     </div>     
     <div class="locationWrapper">
         <ng4geo-autocomplete (componentCallback)="onLocationSelection($event)"></ng4geo-autocomplete>          
     </div> 
-    <button class="raised-button button-right-align searchBtn"  mat-raised-button color="primary" (click)="onSearchClick(searchBox.value)">Search</button>
+    <button class="raised-button button-right-align searchBtn"  style="width : 13% !important;" mat-raised-button color="primary" (click)="onSearchClick(searchBox.value)">Search</button>
 </div>
 
 <div class="demo-grid-list grid-inner-div">
@@ -14,7 +14,7 @@
   <!-- <div class="button-right-align"><a mat-raised-button color="warn" routerLink="/create-meetup" >Create a Meetup</a></div> -->
   
     <mat-grid-list cols="3" gutterSize="10px" rowHeight="300px">
-      <mat-grid-tile *ngFor="let meetup of meetups$ | async">
+      <mat-grid-tile *ngFor="let meetup of meetups$ | async" class="meetupTile" [style.background]="lightblue">
 
         <mat-card mat-ripple style="padding: 0px; top:-20px;" (click)="onRowClicked(meetup.meetupId)">
             <img flex [alt]="meetup.name" src="{{meetup.imagebase64}}" width="300px"  height="250px">
