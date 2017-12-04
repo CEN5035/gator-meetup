@@ -7,7 +7,8 @@ import {
     EventEmitter,
     OnInit,
     OnChanges,
-    ElementRef
+    ElementRef,
+    ViewEncapsulation
 } from '@angular/core';
 import {
     isPlatformBrowser,
@@ -47,6 +48,7 @@ export interface Settings {
 
 @Component({
     selector: 'ng4geo-autocomplete',
+    encapsulation: ViewEncapsulation.None,    
     templateUrl: './ng4-geo-autocomplete.component.html',
     styleUrls: ['./ng4-geo-autocomplete.component.css'],
     host: {

@@ -1,10 +1,14 @@
-<div class="demo-grid-list grid-inner-div">
+<div class="searchBar">
+    <div class="searchWrapper">
+        <input class="search-box" #searchBox id="search-box" type="text" placeholder="Search" />                 
+    </div>     
+    <div class="locationWrapper">
+        <ng4geo-autocomplete (componentCallback)="onLocationSelection($event)"></ng4geo-autocomplete>          
+    </div> 
+    <button class="raised-button button-right-align searchBtn"  mat-raised-button color="primary" (click)="onSearchClick(searchBox.value)">Search</button>
+</div>
 
-  <div>
-    <input class="search-box" #searchBox id="search-box" type="text" placeholder="Search" />  
-      <ng4geo-autocomplete (componentCallback)="onLocationSelection($event)"></ng4geo-autocomplete>
-      <button class="raised-button button-right-align"  mat-raised-button color="primary" (click)="onSearchClick(searchBox.value)">Search</button>
-  </div>
+<div class="demo-grid-list grid-inner-div">
 <br>
   <h2 style="color: #424242;">Meetups Around You</h2>
   <!-- <div class="button-right-align"><a mat-raised-button color="warn" routerLink="/create-meetup" >Create a Meetup</a></div> -->

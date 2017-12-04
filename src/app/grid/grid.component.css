@@ -9,23 +9,47 @@
     padding-left: 15%;
     padding-right: 15%;
     background: white;
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     padding-bottom: 30px;
 }
 
 .search-box, #search_places {
-    height:3.0em;
-    width:60%;
+    height:2.8em;
+    width:40%;
     margin-bottom:10px;
-    display: inline!important;
+    display: inline-block!important;
     
 }
 
 .location-box {
-    display: inline!important;
-    width:10%;
+    display: inline-block!important;
+    width:40%;
 }
 
 .mat-toolbar {
     background: white important;
+}
+
+.searchBtn {
+    position: relative;
+    left: -428px;
+    top: -62px;
+}
+
+.searchWrapper {
+    display: inline-block; width: 31%;
+    position: relative;
+    left: 200px;
+    top: -15px;
+}
+
+.locationWrapper {
+    display : inline-block;
+    width: 68%; 
+    position: relative; 
+    right: 304px;
+}
+
+.searchBar {
+    margin-top: 30px;
 }
