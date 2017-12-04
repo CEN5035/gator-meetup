@@ -16,7 +16,7 @@ export class GetMeetupDetailsService {
   getMeetupDetails() {
     let headers = new Headers();
     let options = new RequestOptions( {method: RequestMethod.Get, headers: headers });
-    const meetupId = localStorage.getItem("meetupId");
+    const meetupId = localStorage.getItem("meetup");
     console.log("meetupId " + meetupId );
      return this._http.get("http://localhost:8000/getMeetupDetails?id="+meetupId, options).map(result => this.result = result.json().data);
   }
