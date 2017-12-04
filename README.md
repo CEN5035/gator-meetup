@@ -1,12 +1,29 @@
 # GatorMeetup
-Website to organize events within UF
+
+Website to organize events within UF  
 Tech Stack : Angular, Angular Material, Node.js, Express, MongoDB
+
+## Prerequisites
+
+**Node.js v6.x Install instructions**:
+
+```sh
+# Using Ubuntu
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -sL https://deb.nodesource.com/setup_6.x | bash -
+apt-get install -y nodejs
+```
 
 ## Install/Run instructions  
 #### Frontend
     npm install;
     ng serve -o
 #### Backend
+
+    cd backend;
     npm install;
     node server.js  
 ## Documentation

@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node ./node_modules/mocha/bin/mocha"    
+
+    "test": "node ./node_modules/mocha/bin/mocha --exit"    
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,9 @@
     "ansi-styles": "^3.2.0",
     "anymatch": "^1.3.2",
     "argparse": "^1.0.9",
+    "ejs": "^2.5.7",
+    "nodemailer": "^4.1.2",
+    "uuid": "^3.1.0",
     "arr-diff": "^4.0.0",
     "arr-flatten": "^1.1.0",
     "array-flatten": "^2.1.1",
@@ -33,6 +37,7 @@
     "assert-plus": "^1.0.0",
     "ast-traverse": "^0.1.1",
     "ast-types": "^0.9.14",
+    "bcryptjs": "^2.4.3",
     "async": "^2.6.0",
     "async-each": "^1.0.1",
     "asynckit": "^0.4.0",
@@ -300,6 +305,8 @@
     "prelude-ls": "^1.1.2",
     "preserve": "^0.2.0",
     "private": "^0.1.8",
+    "jsonwebtoken": "^8.0.1",
+
     "process-nextick-args": "^1.0.7",
     "progress": "^2.0.0",
     "proxy-addr": "^2.0.2",
@@ -396,7 +403,6 @@
     "util": "^0.10.3",
     "util-deprecate": "^1.0.2",
     "utils-merge": "^1.0.1",
-    "uuid": "^3.1.0",
     "vary": "^1.1.2",
     "verror": "^1.10.0",
     "window-size": "^1.1.0",
