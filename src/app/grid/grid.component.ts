@@ -3,6 +3,7 @@ import { GetMeetupsService } from './get-meetups.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { of } from 'rxjs/observable/of';
+import { Router, ActivatedRoute } from '@angular/router';
 import {
   debounceTime, distinctUntilChanged, switchMap, startWith
 } from 'rxjs/operators';
@@ -22,7 +23,7 @@ export class GridComponent {
   selectedLoc: any;
   isLocationSet = false;
 
-  constructor(public meetupsService: GetMeetupsService) {
+  constructor(public meetupsService: GetMeetupsService, private router: Router) {
     this.meetups$ = meetupsService.getMeetups();
   }
 
@@ -31,9 +32,10 @@ export class GridComponent {
   //   this.searchTerms.next(term);
   // }
 
-
   onRowClicked(id: string): void {
     console.log(id);
+    window.localStorage.setItem('meetup', id);
+    this.router.navigate(['/show-meetup']);
   }
 
   onLocationSelection(selectedLoc: any) {

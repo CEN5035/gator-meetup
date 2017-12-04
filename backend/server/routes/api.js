@@ -8,7 +8,6 @@ const MongoClient = require('mongodb').MongoClient, assert = require('assert');
 const ObjectID = require('mongodb').ObjectID
 
 const authMiddleware = require('../../middlewares/auth.middleware');
-
 const bcrypt = require('bcryptjs');
 
 // Connect
@@ -17,10 +16,7 @@ var db;
 // Connection URL
 var url = process.env.MONGO_DB_DEV_URI
 const SERVER_URL = 'http://localhost:8000/';
-
 const tokenExpireTime = '1h';
-
-
 
 // Use connect method to connect to the server
 var mongo_connection = url;
@@ -51,17 +47,13 @@ router.get('/invalidURL', (req, res) => {
 
 router.get('/searchMeetups', (req, res) => {
     connection((db) => {
-
-        console.log(req);    
-        
+        //console.log(req);    
         var query = {$or:
             [
                 { meetupName: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}},
-                {tags: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}}
+                { tags: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}}
             ]
         };        
-        
-
         db.collection('meetup')
             .find(query)
             .toArray()
@@ -112,7 +104,6 @@ router.get('/searchNearbyMeetups', (req, res) => {
     });
 });
 
-
 router.get('/getMeetups', (req, res) => {
     connection((db) => {
         db.collection('meetup')
@@ -138,6 +129,23 @@ router.post('/postMeetup', (req, res) => {
                 response.data = events;
                 res.json(response);
                 console.log(res);
+            })
+            .catch((err) => {
+                sendError(err, res);
+            });
+    });
+});
+
+router.get('/getMeetupDetails', (req, res) => {
+    var meetupId = req.query.id;
+    console.log("meetupid %o", meetupId);
+    connection((db) => {
+        db.collection('meetup')
+            .findOne({"meetupId" : parseInt(meetupId)})
+            .then((meetup) => {
+                response.data = meetup;
+                res.json(response);
+                console.log("%o", meetup);
             })
             .catch((err) => {
                 sendError(err, res);
@@ -271,7 +279,6 @@ router.post('/users/login', (req, res) => {
             });
     });
 });
-
 
 router.post('/users/forgot', (req, res, next) => {
     if (!req.body.email) {

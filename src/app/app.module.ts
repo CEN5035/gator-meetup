@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 
-
-
 /* Services */
 import { CommonService } from './providers/common.service';
 import { ApiService } from './providers/api.service';
@@ -13,7 +11,6 @@ import { UserService } from './providers/user.service';
 
 /* Guards */
 import { AuthGuard } from "./guards/auth.guard";
-
 
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
@@ -26,8 +23,7 @@ import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
 
 import { CreateMeetUpService } from './create-meetup/create-meetup.service';
 import { GetMeetupsService } from './grid/get-meetups.service';
-
-
+import { GetMeetupDetailsService } from './show-meetup/show-meetup.service';
 
 import {
   MatAutocompleteModule,
@@ -69,7 +65,6 @@ import { SignupComponent } from './signup/signup.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { EditComponent } from './create-meetup-2/edit/edit.component';
 import { PsersonService } from './create-meetup-2/person.service';
-
 import { ShowMeetupComponent } from './show-meetup/show-meetup.component';
 // import { SettingsComponent } from './settings/settings.component';
 
@@ -111,7 +106,6 @@ import { ShowMeetupComponent } from './show-meetup/show-meetup.component';
 })
 export class AppMaterialModule { }
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,7 +116,7 @@ export class AppMaterialModule { }
     SignupComponent,
     ForgotComponent,
     EditComponent,
-
+    ShowMeetupComponent
     // SettingsComponent
   ],
   imports: [
@@ -135,12 +129,16 @@ export class AppMaterialModule { }
     AppMaterialModule,
     Ng4GeoautocompleteModule.forRoot()
   ],
-  providers: [CreateMeetUpService, GetMeetupsService,
+  providers: [
+    CreateMeetUpService,
+    GetMeetupsService,
+    GetMeetupDetailsService,
     CommonService,
     ApiService,
     UserService,
     PsersonService,
-    AuthGuard,],
+    AuthGuard
+  ],
 
   bootstrap: [AppComponent]
 })

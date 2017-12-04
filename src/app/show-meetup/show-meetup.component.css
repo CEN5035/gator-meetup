@@ -1,0 +1,55 @@
+.create-meetup-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .create-meetup-image {
+    width:60px;
+  }
+  
+  .create-meetup-image-alignment {
+    position: absolute;
+    left: 25%;
+    width:5%
+  }
+  
+  .create-meetup-step-alignment {
+    width:85px;
+    margin-left: 33.5%;
+    margin-top:10px;
+  }
+  
+  .create-meetup-question-alignment {
+    margin-left: 33.5%;
+  }
+  
+  .create-meetup-textbox {
+    width: 35%;
+    margin-left: 33.5%;
+    display: block;
+    padding: 8px;
+    margin-top:1.5%;
+  }
+  
+  .location-complete-textbox {
+    margin-left: 33.5%;
+    height: 15%;
+  }
+  
+  .create-meetup-list {
+    margin-left: 33.5%;
+    display: block;
+  }
+  
+  .raised-button {
+    margin-left: 33.5%;
+    margin-top:1.5%;
+    margin-bottom:1.5%;
+  }
+  
+  .mat-card {
+    min-width:650px;
+    margin:0 auto;
+  }
+  
