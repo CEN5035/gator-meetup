@@ -1,4 +1,4 @@
-.create-meetup  {
+.button-right-align  {
     float: right;
     top: -52px;
     position: relative;
@@ -11,4 +11,17 @@
     background: #E5E5E5;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+
+.search-box, #search_places {
+    height:3.0em;
+    width:60%;
+    margin-bottom:10px;
+    display: inline!important;
+    
+}
+
+.location-box {
+    display: inline!important;
+    width:10%;
 }

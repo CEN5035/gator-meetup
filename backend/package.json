@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
 
-    "test": "node ./node_modules/mocha/bin/mocha"    
+    "test": "node ./node_modules/mocha/bin/mocha --exit"    
   },
   "author": "",
   "license": "ISC",
