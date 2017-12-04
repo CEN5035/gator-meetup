@@ -30,7 +30,6 @@ export class GridComponent {
     this.searchTerms.next(term);
   }
 
-
   onRowClicked(id: string): void {
     console.log(id);
     window.localStorage.setItem('meetup', id);

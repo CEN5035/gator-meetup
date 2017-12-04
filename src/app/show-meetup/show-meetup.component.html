@@ -1,7 +1,7 @@
-<div class="w3-container w3-margin">
+<div class="w3-container w3-margin" *ngIf="meetup">
   <mat-card >
     <mat-card-title class="w3-center">
-      Meetup Details
+      Meetup Details {{meetup.meetupName}}
     </mat-card-title>
     <mat-card-content>
       <div class="create-meetup-container">
@@ -13,11 +13,10 @@
                 </div>
                 <form [formGroup]="locationForm">
                   <div class="create-meetup-question-alignment">
-                    <h3>Whats's your meetup group's location?</h3>
+                    <h3>Location: {{ meetup.locationDescription}} </h3>
                   </div>
                   <div>
                     <!-- <input class="w3-border create-meetup-textbox" type="text" formControlName="location"> -->
-                    <ng4geo-autocomplete (componentCallback)="onLocationSelection($event)"></ng4geo-autocomplete>
                   </div>
                 </form>
             </div>
@@ -29,7 +28,7 @@
               </div>
               <form [formGroup]="agendaForm">
               <div class="create-meetup-question-alignment">
-                <h3>What will your group meeting be about?</h3>
+                <h3>Description : {{ meetup.description}} </h3>
               </div>
               <div>
                 <input class="w3-border create-meetup-textbox" type="text" [(ngModel)]="agenda" formControlName="agenda" >
@@ -44,7 +43,7 @@
               </div>
               <form [formGroup]="topicForm">
               <div class="create-meetup-question-alignment">
-                <h3>What is the name of the your new meeting?</h3>
+                <h3></h3>
               </div>
               <div>
                 <input class="w3-border create-meetup-textbox" type="text" [(ngModel)]="name" formControlName="name">
@@ -74,7 +73,7 @@
               </div>      
           </li>
         </ul>
-        <div>
+        <!-- <div>
           <div>
             <div class="create-meetup-image-alignment">
               <img src="assets/create-meetup/terms.png" class="w3-bar-item w3-circle w3-hide-small create-meetup-image">
@@ -91,7 +90,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </mat-card-content>
   </mat-card>

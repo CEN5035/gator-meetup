@@ -4,8 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 
-
-
 /* Services */
 import { CommonService } from './providers/common.service';
 import { ApiService } from './providers/api.service';
@@ -13,7 +11,6 @@ import { UserService } from './providers/user.service';
 
 /* Guards */
 import { AuthGuard } from "./guards/auth.guard";
-
 
 import { AppComponent } from './app.component';
 import { GridComponent } from './grid/grid.component';
@@ -26,6 +23,7 @@ import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
 
 import { CreateMeetUpService } from './create-meetup/create-meetup.service';
 import { GetMeetupsService } from './grid/get-meetups.service';
+import { GetMeetupDetailsService } from './show-meetup/show-meetup.service';
 
 import {
   MatAutocompleteModule,
@@ -131,12 +129,16 @@ export class AppMaterialModule { }
     AppMaterialModule,
     Ng4GeoautocompleteModule.forRoot()
   ],
-  providers: [CreateMeetUpService, GetMeetupsService,
+  providers: [
+    CreateMeetUpService,
+    GetMeetupsService,
+    GetMeetupDetailsService,
     CommonService,
     ApiService,
     UserService,
     PsersonService,
-    AuthGuard,],
+    AuthGuard
+  ],
 
   bootstrap: [AppComponent]
 })
