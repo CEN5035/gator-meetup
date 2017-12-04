@@ -14,15 +14,15 @@ import { AuthGuard } from './guards/auth.guard';
 // import {SettingsComponent} from './settings/settings.component';
 
 const routes: Routes = [
-    { path: '', component: GridComponent },
+    { path: '', component: GridComponent, pathMatch: 'full' },
     { path: 'home', component: GridComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'forgot-password', component: ForgotComponent },
     { path: 'create-meetup', component: CreateMeetupComponent },
-    { path: 'settings', component: SettingsComponent },
-    { path: 'Edit/:display/:value', component: EditComponent },
-    { path: 'show-meetup', component: ShowMeetupComponent}
+    { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], },
+    { path: 'Edit/:display/:value', component: EditComponent, canActivate: [AuthGuard], },
+    { path: 'show-meetup', component: ShowMeetupComponent, canActivate: [AuthGuard],}
     // { path: 'settings',  component: SettingsComponent }
 ];
 
