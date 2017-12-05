@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { GetMeetupDetailsService } from './show-meetup.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -22,7 +21,7 @@ export class ShowMeetupComponent implements OnInit {
   topicForm: FormGroup;
   imageForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public getMeetupService: GetMeetupDetailsService) {
+  constructor(private fb: FormBuilder) {
     //this.meetup$ = getMeetupService.getMeetupDetails();
     //console.log('%o', this.meetup$);
     this.locationForm = fb.group({
@@ -41,11 +40,11 @@ export class ShowMeetupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.subscription = this.getMeetupService.getMeetupDetails().subscribe(data => {this.meetup = data; });
+    //this.subscription = this.getMeetupService.getMeetupDetails().subscribe(data => {this.meetup = data; });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    //this.subscription.unsubscribe();
   }
 
 }

@@ -66,3 +66,12 @@
 .meetupTile, .mat-card {
     color: black;
 }
+
+.mat-card img, .mat-card-content img, .mat-card-image{ 
+    height : 200px !important;
+}
+
+.cardHeight {
+    display: block;
+    margin-top: 15px;
+}

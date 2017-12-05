@@ -9,7 +9,8 @@ import { CarouselService } from 'angular4-carousel';
 import {
   debounceTime, distinctUntilChanged, switchMap, startWith
 } from 'rxjs/operators';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
+import { GetMeetupDetailsService } from './show-meetup.service';
 
 /**
  * @title Dynamic grid-list
@@ -21,11 +22,14 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class GridComponent {
   meetups$: Observable<Object>;
+  meetupDetail$: Observable<Object>;
   private searchTerms = new Subject<string>();
   selectedLoc: any;
   isLocationSet = false;
+  mdialog;
 
-  constructor(public meetupsService: GetMeetupsService, private router: Router, private x: CarouselService, public dialog: MatDialog) {
+  constructor(public meetupsService: GetMeetupsService, private router: Router, private x: CarouselService, 
+    public dialog: MatDialog, public getMeetupService: GetMeetupDetailsService ) {
     this.meetups$ = meetupsService.getMeetups();
   }
 
@@ -55,10 +59,29 @@ export class GridComponent {
   onRowClicked(id: string): void {
     console.log(id);
     window.localStorage.setItem('meetup', id);
-    const dialogRef = this.dialog.open(DialogOverviewExampleComponent, {
-      width: '250px',
-      data: { name: 'divya', animal: 'mahe' }
-    });
+
+    let config = {
+      disableClose: false,
+      width: '600px',
+      height: '600px',
+      data: {}
+    };
+
+    let details = this.getMeetupService.getMeetupDetails();
+
+    details.subscribe(
+      data => {
+          console.log("%o ", data);
+          this.meetupDetail$ = data;
+          config.data = data;
+          this.dialog.open(DialogOverviewExampleComponent, config);
+      });
+
+      /*const dialogRef = this.dialog.open(DialogOverviewExampleComponent, {
+        width: '600px',
+        height  : '600px'
+      });*/
+
     //this.router.navigate(['/show-meetup']);
   }
 
