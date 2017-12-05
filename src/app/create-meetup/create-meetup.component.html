@@ -16,11 +16,16 @@
                 </div>
                 <form [formGroup]="locationForm">
                   <div class="create-meetup-question-alignment">
-                    <h3>Whats's your meetup group's location?</h3>
+                    <h3>When and where is your meetup?</h3>
                   </div>
                   <div>
                     <!-- <input class="w3-border create-meetup-textbox" type="text" formControlName="location"> -->
                     <ng4geo-autocomplete (componentCallback)="onLocationSelection($event)"></ng4geo-autocomplete>
+                  </div>
+                  <div class="create-meetup-question-alignment">
+                      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" formControlName="date" type="text" style="margin-top: 25px;height: 41px; width: 298px;">                      
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
                   </div>
                   <div>
                     <button class="raised-button"  mat-raised-button color="primary" [disabled]="hideLocationNext" (click)="onLocationClick()">Next</button>

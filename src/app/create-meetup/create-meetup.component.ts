@@ -25,6 +25,7 @@ export class CreateMeetupComponent {
   agenda = '';
   name = '';
   description = '';
+  date = '';
 
   image = '';
   hideLocationNext = true;
@@ -33,6 +34,7 @@ export class CreateMeetupComponent {
   constructor(private fb: FormBuilder, public meetUpObj: CreateMeetUpService) {
     this.locationForm = fb.group({
       'location': [null, Validators.required],
+      'date' : [null]
     });
     this.agendaForm = fb.group({
       'agenda': [null, Validators.required],
@@ -80,10 +82,14 @@ export class CreateMeetupComponent {
       this.image = myReader.result;
       console.log(this.image);
     };
-    myReader.readAsDataURL(file);    
+    myReader.readAsDataURL(file);
   }
 
   onSubmit() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  
     this.submitted = true;
     this.postData.location=this.selectedLoc.vicinity;
     this.postData.agenda=this.agenda;
@@ -97,6 +103,9 @@ export class CreateMeetupComponent {
     this.postData.meetupOwner= "Venkat" //session userid should be passed.
 
     this.postData.meetupId = this.uniqueId();
+    let d = new Date(this.date);
+    this.postData.date = monthNames[d.getMonth()] + " " + d.getDay() + ", " + d.getFullYear();
+    
     this.postData.locationDescription = this.selectedLoc.address_components[2].long_name + ", " + this.selectedLoc.address_components[4].long_name;
     this.meetUpObj.createMeetUp(this.postData);
   }

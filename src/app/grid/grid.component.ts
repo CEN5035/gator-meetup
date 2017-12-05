@@ -63,7 +63,7 @@ export class GridComponent {
     let config = {
       disableClose: false,
       width: '600px',
-      height: '600px',
+      height: '620px',
       data: {}
     };
 
