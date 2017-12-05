@@ -30,34 +30,48 @@
     background: white important;
 }
 
-.searchBtn {
+.searchBtn{
+    width: 15%;
+    float: right;
+    top: -56px;
     position: relative;
-    left: -367px;
-    top: -63px;
-    width : 13% !important;
+    left: -68px;
 }
 
-.searchWrapper[_ngcontent-c3] {
+.searchWrapper {
     display: inline-block;
     width: 31%;
     position: relative;
-    left: 80px;
-    top: -15px;
+    left: 111px;
+    top: -8px;
+    z-index: 1000;
 }
 
 .locationWrapper {
-    display : inline-block;
-    width: 68%; 
-    position: relative; 
-    right: 304px;
+    display: inline-block;
+    width: 68%;
+    position: relative;
+    right: 118px;
+    top: 8px;
 }
 
-.searchBar {
+.searchBar[_ngcontent-c3] {
     margin-top: 30px;
-    left: 106px;
+    left: 120px;
     position: relative;
+    background : #424242;
+    width: 80%;
 }
 
 .meetupTile, .mat-card {
     color: black;
+}
+
+.mat-card img, .mat-card-content img, .mat-card-image{ 
+    height : 200px !important;
+}
+
+.cardHeight {
+    display: block;
+    margin-top: 15px;
 }

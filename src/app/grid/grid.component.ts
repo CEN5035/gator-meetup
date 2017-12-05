@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import { GetMeetupsService } from './get-meetups.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -9,7 +9,8 @@ import { CarouselService } from 'angular4-carousel';
 import {
   debounceTime, distinctUntilChanged, switchMap, startWith
 } from 'rxjs/operators';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
+import { GetMeetupDetailsService } from './show-meetup.service';
 
 /**
  * @title Dynamic grid-list
@@ -21,18 +22,23 @@ import {
 })
 export class GridComponent {
   meetups$: Observable<Object>;
+  meetupDetail$: Observable<Object>;
   private searchTerms = new Subject<string>();
   selectedLoc: any;
   isLocationSet = false;
+  mdialog;
 
-  constructor(public meetupsService: GetMeetupsService, private router: Router, private x: CarouselService) {
+  constructor(public meetupsService: GetMeetupsService, private router: Router, private x: CarouselService, 
+    public dialog: MatDialog, public getMeetupService: GetMeetupDetailsService ) {
     this.meetups$ = meetupsService.getMeetups();
   }
 
   public imageSources: string[] = [
+    'https://ak9.picdn.net/shutterstock/videos/5117969/thumb/1.jpg',
     'http://ak2.picdn.net/shutterstock/videos/18324082/thumb/3.jpg',
     'https://ak8.picdn.net/shutterstock/videos/3159418/thumb/7.jpg?i10c=img.resize(height:160)',
-    'http://goldwallpapers.com/uploads/posts/wide-backgrounds/wide_backgrounds_028.jpg'
+    'https://ak8.picdn.net/shutterstock/videos/11062748/thumb/1.jpg',
+    'https://ak1.picdn.net/shutterstock/videos/8221801/thumb/1.jpg'
   ];
 
   public config: ICarouselConfig = {
@@ -53,7 +59,30 @@ export class GridComponent {
   onRowClicked(id: string): void {
     console.log(id);
     window.localStorage.setItem('meetup', id);
-    this.router.navigate(['/show-meetup']);
+
+    let config = {
+      disableClose: false,
+      width: '600px',
+      height: '600px',
+      data: {}
+    };
+
+    let details = this.getMeetupService.getMeetupDetails();
+
+    details.subscribe(
+      data => {
+          console.log("%o ", data);
+          this.meetupDetail$ = data;
+          config.data = data;
+          this.dialog.open(DialogOverviewExampleComponent, config);
+      });
+
+      /*const dialogRef = this.dialog.open(DialogOverviewExampleComponent, {
+        width: '600px',
+        height  : '600px'
+      });*/
+
+    //this.router.navigate(['/show-meetup']);
   }
 
   onLocationSelection(selectedLoc: any) {
@@ -85,4 +114,20 @@ export class GridComponent {
     // );
     this.meetups$ = this.meetupsService.searchMeetups('');
   }
+}
+
+@Component({
+  selector: 'app-dialog-overview-example-dialog',
+  templateUrl: 'meetup-detail-dialog.html',
+})
+export class DialogOverviewExampleComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

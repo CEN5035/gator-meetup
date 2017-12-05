@@ -1,0 +1,36 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}!</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.animal" tabindex="2">Ok</button>
+  <button mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+</div>  -->
+
+<mat-card class="example-card">
+        <!-- <mat-card-header>
+          <div>
+              <img mat-card-image src="{{data.imagebase64}}" alt="Photo of a Shiba Inu">  
+          </div>              
+          <mat-card-title>{{data.meetupName}}</mat-card-title>
+          <mat-card-subtitle>
+              <span> Created by: {{data.owner}}</span>
+              <span>{{data.locationDescription}} </span>
+          </mat-card-subtitle>
+        </mat-card-header> -->
+        <mat-card-content>
+            <img mat-card-image src="{{data.imagebase64}}" height="200px" alt="Photo of a Shiba Inu" >  
+            <span style="font-size: 40px; font-family: serif; display : block;"> {{data.meetupName}} </span>
+            <span class="cardHeight" style="font-size: 20px; font-family: initial; display : block;"> Organized by: {{data.meetupOwner}} </span>
+            <span class="cardHeight" style="margin-left: -6px; display : block;">            
+                    <mat-icon style="position: relative; top: 5px;">place</mat-icon>
+                                    {{data.locationDescription}} 
+            </span>
+            <hr>
+            <span class="cardHeight" style="display : block; margin-top: 15px;"> Agenda: {{data.agenda}} </span>
+            <span class="cardHeight" style="display : block; margin-top: 15px;"> {{data.description}} </span>
+        </mat-card-content>
+      </mat-card>
