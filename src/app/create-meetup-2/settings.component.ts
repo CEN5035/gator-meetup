@@ -23,9 +23,7 @@ export class SettingsComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   settingsItems: Object[] = [
-    { name: 'General' },
-    { name: 'Profile' },
-    { name: 'Others' },
+    { name: 'General' }
 
   ];
   selectedSettingsItem: String = this.settingsItems[0]['name'];

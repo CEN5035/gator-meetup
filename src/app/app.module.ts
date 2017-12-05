@@ -25,7 +25,7 @@ import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
 
 import { CreateMeetUpService } from './create-meetup/create-meetup.service';
 import { GetMeetupsService } from './grid/get-meetups.service';
-import { GetMeetupDetailsService } from './show-meetup/show-meetup.service';
+import { GetMeetupDetailsService } from './grid/show-meetup.service';
 import { CarouselModule } from 'angular4-carousel';
 
 import {
@@ -69,6 +69,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { EditComponent } from './create-meetup-2/edit/edit.component';
 import { PsersonService } from './create-meetup-2/person.service';
 import { ShowMeetupComponent } from './show-meetup/show-meetup.component';
+import { DialogOverviewExampleComponent } from './grid/grid.component';
 // import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
@@ -119,7 +120,8 @@ export class AppMaterialModule { }
     SignupComponent,
     ForgotComponent,
     EditComponent,
-    ShowMeetupComponent
+    ShowMeetupComponent,
+    DialogOverviewExampleComponent
     // SettingsComponent
   ],
   imports: [
@@ -144,7 +146,9 @@ export class AppMaterialModule { }
     PsersonService,
     AuthGuard
   ],
-
+  entryComponents: [
+    DialogOverviewExampleComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

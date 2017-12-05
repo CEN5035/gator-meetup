@@ -39,7 +39,7 @@ export class CreateMeetupComponent {
     });
     this.topicForm = fb.group({
       'name': [null, Validators.required],
-      'description': [null, Validators.compose([Validators.required, Validators.minLength(15), Validators.maxLength(60)])],
+      'description': [null, Validators.compose([Validators.required, Validators.minLength(15)])],
     });
 
     this.imageForm = fb.group({
@@ -94,7 +94,7 @@ export class CreateMeetupComponent {
     this.postData.thumbUrl='http://quantifiedself.com/wp-content/uploads/2017/04/600_459142880.jpeg';
     this.postData.description=this.description;
     this.postData.coordinates=[this.selectedLoc.geometry.location.lat,this.selectedLoc.geometry.location.lng];
-    this.postData.meetupOwner="Venkat" //session userid should be passed.
+    this.postData.meetupOwner= "Venkat" //session userid should be passed.
 
     this.postData.meetupId = this.uniqueId();
     this.postData.locationDescription = this.selectedLoc.address_components[2].long_name + ", " + this.selectedLoc.address_components[4].long_name;
