@@ -6,6 +6,10 @@ export class AppPage {
     return browser.get('/create-meetup');
   }
 
+  navigateToLogin() {
+    return browser.get('/login');
+  }
+
   navigateToHome() {
     return browser.get('/home');
   }
@@ -57,5 +61,20 @@ export class AppPage {
   clickNextButton(index) {
     element.all(by.tagName('button')).get(index).click();
     // browser.pause();
+  }
+
+  login() {
+    const firstTextBox = element.all(by.tagName('input')).get(0);
+    const secondTextBox = element.all(by.tagName('input')).get(1);
+    const emailid = 'dmahendran@ufl.edu';
+    const password = 123456 ;
+    firstTextBox.clear();
+    firstTextBox.sendKeys(emailid);
+    secondTextBox.clear();
+    secondTextBox.sendKeys(password);
+    const submitButton = element.all(by.tagName('button')).get(0);
+    submitButton.click();
+
+
   }
 }
