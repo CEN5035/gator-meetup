@@ -1,7 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://circleci.com/gh/CEN5035/gator-meetup/tree/master.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/CEN5035/gator-meetup)
-
-
-# GatorMeetup
+# GatorMeetup [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://circleci.com/gh/CEN5035/gator-meetup/tree/master.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/CEN5035/gator-meetup)
 
 Website to organize events within UF  
 Tech Stack : Angular, Angular Material, Node.js, Express, MongoDB
