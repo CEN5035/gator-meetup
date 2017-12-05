@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { of } from 'rxjs/observable/of';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ICarouselConfig, AnimationConfig } from 'angular4-carousel';
+import { CarouselService } from 'angular4-carousel';
 import {
   debounceTime, distinctUntilChanged, switchMap, startWith
 } from 'rxjs/operators';
@@ -23,9 +25,25 @@ export class GridComponent {
   selectedLoc: any;
   isLocationSet = false;
 
-  constructor(public meetupsService: GetMeetupsService, private router: Router) {
+  constructor(public meetupsService: GetMeetupsService, private router: Router, private x: CarouselService) {
     this.meetups$ = meetupsService.getMeetups();
   }
+
+  public imageSources: string[] = [
+    'http://ak2.picdn.net/shutterstock/videos/18324082/thumb/3.jpg',
+    'https://ak8.picdn.net/shutterstock/videos/3159418/thumb/7.jpg?i10c=img.resize(height:160)',
+    'http://goldwallpapers.com/uploads/posts/wide-backgrounds/wide_backgrounds_028.jpg'
+  ];
+
+  public config: ICarouselConfig = {
+    verifyBeforeLoad: true,
+    log: false,
+    animation: true,
+    animationType: AnimationConfig.SLIDE,
+    autoplay: true,
+    autoplayDelay: 2000,
+    stopAutoplayMinWidth: 768
+  };
 
   // search(term: string): void {
   //   console.log(term);

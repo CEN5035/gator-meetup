@@ -43,6 +43,4 @@ export class LoginComponent implements OnInit {
         alert(JSON.parse(err._body).message);
       });
   }
-
-
 }
