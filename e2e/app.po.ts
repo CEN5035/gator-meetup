@@ -18,6 +18,14 @@ export class AppPage {
     return browser.get('/signup');
   }
 
+  navigateToforgotpassword() {
+    return browser.get('/forgot-password');
+  }
+
+  navigateToSettings() {
+    return browser.get('/settings');
+  }
+
   getParagraphText() {
     return element(by.css('app-root h2')).getText();
   }
