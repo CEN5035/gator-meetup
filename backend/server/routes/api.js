@@ -47,13 +47,13 @@ router.get('/invalidURL', (req, res) => {
 
 router.get('/searchMeetups', (req, res) => {
     connection((db) => {
-        //console.log(req);    
+        console.log(req);
         var query = {$or:
             [
                 { meetupName: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}},
                 { tags: {$regex: new RegExp('.*?'+req.headers.search+'.*?'), $options: "ix"}}
             ]
-        };        
+        };
         db.collection('meetup')
             .find(query)
             .toArray()
@@ -403,8 +403,6 @@ router.get('/users/reset/:token', (req, res, next) => {
 
 
 router.post('/users/reset/:token', (req, res, next) => {
-    console.log(req.params.token);
-    console.log(req.body.password);
 
     let password = req.body.password;
 
@@ -481,11 +479,11 @@ router.post('/users/islogin', authMiddleware, (req, res, next) => {
 });
 
 router.post('/updateData', (req, res) => {
-    console.log('Body', req.body);
+    // console.log('Body', req.body);
     // res.send('ok');
     var data = req.body;
     var valueType = req.body.valueType;
-    console.log('UserId', req.body.userId);
+    // console.log('UserId', req.body.userId);
 
     var newData;
     var oldData;
@@ -565,8 +563,8 @@ router.post('/updateData', (req, res) => {
     }
 
 
-    console.log(oldData);
-    console.log(newData);
+    // console.log(oldData);
+    // console.log(newData);
     connection((db) => {
         db.collection('users')
             .update({ userId: req.body.userId }, newData)
