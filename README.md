@@ -1,4 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://circleci.com/gh/CEN5035/gator-meetup/tree/master.svg?style=shield&circle-token=:circle-token)](https://travis-ci.org/Shanfang/SmartNote)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://circleci.com/gh/CEN5035/gator-meetup/tree/master.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/CEN5035/gator-meetup)
 
 
 # GatorMeetup
