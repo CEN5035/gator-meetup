@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import {RouterModule} from '@angular/router';
 
 /* Services */
 import { CommonService } from './providers/common.service';
@@ -17,6 +18,7 @@ import { GridComponent } from './grid/grid.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CdkTableModule } from '@angular/cdk/table';
+
 
 
 import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
@@ -131,7 +133,8 @@ export class AppMaterialModule { }
     AppRoutingModule,
     AppMaterialModule,
     Ng4GeoautocompleteModule.forRoot(),
-    CarouselModule
+    CarouselModule,
+    RouterModule
   ],
   providers: [
     CreateMeetUpService,
