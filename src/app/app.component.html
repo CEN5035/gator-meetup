@@ -9,12 +9,23 @@
       <div class="button-right-align toolbarBtn">
           <a mat-button color="warn" routerLink="/create-meetup">Create a meetup</a>
         </div>
-      <div class="button-right-align toolbarBtn">
+      <div class="button-right-align toolbarBtn"  *ngIf="!user._token">
         <a mat-raised-button color="warn" routerLink="/login">Login</a>
       </div> 
-      <div class="button-right-align toolbarBtn">
+      <div class="button-right-align toolbarBtn" *ngIf="!user._token">
           <a mat-raised-button color="warn" routerLink="/signup">Sign up</a>
       </div> 
+
+      <div class="button-right-align toolbarBtn" *ngIf="user._token">
+          <i class="material-icons icon-32" style="position: relative;
+          top: 10px;
+          right: -26px;">account_circle</i>
+          <a mat-button color="warn" routerLink="/settings" >Divya</a>
+      </div>
+      <div class="button-right-align toolbarBtn" *ngIf="user._token">
+        <a mat-raised-button color="warn" (click)="logout()">Logout</a>
+      </div> 
+      
 
     <!-- <a href="javascript:void(0)" routerLink="/login" *ngIf="!user._token">Login</a>
     <a href="javascript:void(0)" routerLink="/signup" *ngIf="!user._token">Signup</a>
