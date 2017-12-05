@@ -30,9 +30,11 @@ export class GridComponent {
   }
 
   public imageSources: string[] = [
+    'https://ak9.picdn.net/shutterstock/videos/5117969/thumb/1.jpg',
     'http://ak2.picdn.net/shutterstock/videos/18324082/thumb/3.jpg',
     'https://ak8.picdn.net/shutterstock/videos/3159418/thumb/7.jpg?i10c=img.resize(height:160)',
-    'http://goldwallpapers.com/uploads/posts/wide-backgrounds/wide_backgrounds_028.jpg'
+    'https://ak8.picdn.net/shutterstock/videos/11062748/thumb/1.jpg',
+    'https://ak1.picdn.net/shutterstock/videos/8221801/thumb/1.jpg'
   ];
 
   public config: ICarouselConfig = {
