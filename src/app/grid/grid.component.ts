@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import { GetMeetupsService } from './get-meetups.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -9,7 +9,7 @@ import { CarouselService } from 'angular4-carousel';
 import {
   debounceTime, distinctUntilChanged, switchMap, startWith
 } from 'rxjs/operators';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 /**
  * @title Dynamic grid-list
@@ -25,7 +25,7 @@ export class GridComponent {
   selectedLoc: any;
   isLocationSet = false;
 
-  constructor(public meetupsService: GetMeetupsService, private router: Router, private x: CarouselService) {
+  constructor(public meetupsService: GetMeetupsService, private router: Router, private x: CarouselService, public dialog: MatDialog) {
     this.meetups$ = meetupsService.getMeetups();
   }
 
@@ -55,7 +55,11 @@ export class GridComponent {
   onRowClicked(id: string): void {
     console.log(id);
     window.localStorage.setItem('meetup', id);
-    this.router.navigate(['/show-meetup']);
+    const dialogRef = this.dialog.open(DialogOverviewExampleComponent, {
+      width: '250px',
+      data: { name: 'divya', animal: 'mahe' }
+    });
+    //this.router.navigate(['/show-meetup']);
   }
 
   onLocationSelection(selectedLoc: any) {
@@ -87,4 +91,20 @@ export class GridComponent {
     // );
     this.meetups$ = this.meetupsService.searchMeetups('');
   }
+}
+
+@Component({
+  selector: 'app-dialog-overview-example-dialog',
+  templateUrl: 'meetup-detail-dialog.html',
+})
+export class DialogOverviewExampleComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }

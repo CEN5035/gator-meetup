@@ -67,6 +67,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { EditComponent } from './create-meetup-2/edit/edit.component';
 import { PsersonService } from './create-meetup-2/person.service';
 import { ShowMeetupComponent } from './show-meetup/show-meetup.component';
+import { DialogOverviewExampleComponent } from './grid/grid.component';
 // import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
@@ -117,7 +118,8 @@ export class AppMaterialModule { }
     SignupComponent,
     ForgotComponent,
     EditComponent,
-    ShowMeetupComponent
+    ShowMeetupComponent,
+    DialogOverviewExampleComponent
     // SettingsComponent
   ],
   imports: [
@@ -141,7 +143,9 @@ export class AppMaterialModule { }
     PsersonService,
     AuthGuard
   ],
-
+  entryComponents: [
+    DialogOverviewExampleComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
