@@ -14,6 +14,8 @@ import { UserService } from './providers/user.service';
 })
 export class AppComponent {
   title = 'Gator Meetup';
+  isLoggedIn = false;
+  name;
 
   constructor(public common: CommonService,
     public user: UserService,
@@ -23,6 +25,16 @@ export class AppComponent {
       this.loginCheck();
     }
   }
+
+  ngOnInit() {
+    let user = localStorage.getItem("USER_DETAILS");
+    console.log("%o ", user);
+    //this.name = user.name;
+    if (user != null) {
+      this.isLoggedIn = true;
+    }
+  }
+
 
   loginCheck() {
     console.log('tes');
@@ -42,5 +54,4 @@ export class AppComponent {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
-
 }

@@ -1,18 +1,20 @@
+<div class="w3-container w3-card-3" style="width: 60rem;
+padding: 10px;
+position: relative;
+margin: 10px;
+left: 180px;
+top: 38px;">
 <mat-card>
-  <mat-card-title>Settings</mat-card-title>
   <mat-card-content>
     <div class="settings-container">
       <div class="settings-menu">
-        <div class="settings-item" *ngFor="let setting of settingsItems; let i = index" (click)="selectSetting(i)" [ngClass]="{'active-setting' : selectedSettingsItem === setting.name}">
-          {{setting.name}}
-        </div>
       </div>
       <div class="settings-content">
         <div class="setting-content-item" *ngIf="selectedSettingsItem === 'General';then generalSettings"></div>
         <ng-template #generalSettings>
           <div class="setting-content-item">
             <h3>
-                General Settings
+                Profile
             </h3>
             <div class="general-item">
               <div class="general-item-name">Name: </div>
@@ -35,13 +37,13 @@
             </div>
 
            
-            <div class="general-item">
+            <!-- <div class="general-item">
               <div class="general-item-name">
                 Hometown:</div>
               <div class="general-item-value">	{{user?.hometown}}
                 <a [routerLink]="['/Edit','Hometown', user?.hometown]" >Edit</a>
               </div>
-            </div>
+            </div> 
 
 
              
@@ -52,7 +54,7 @@
                 <a [routerLink]="['/Edit','Language' ,user?.language]" >Edit</a>
               </div>
 
-            </div>
+            </div> -->
 
             <div class="general-item">
               <div class="general-item-name">
@@ -76,7 +78,7 @@
             
             <div class="general-item">
               <div class="general-item-name">
-                BIO:</div>
+                Interests:</div>
               <div class="general-item-value">{{user?.bio}}
                 <a [routerLink]="['/Edit','BIO' ,user?.bio]" >Edit</a>
               </div>
@@ -84,9 +86,13 @@
             </div>
           </div>
         </ng-template>
+      </div>
+    </div>
+    </mat-card-content>
+  </mat-card>
+  </div>
 
-
-        <div class="setting-content-item" *ngIf="selectedSettingsItem === 'Profile';then profileSettings"></div>
+        <!-- <div class="setting-content-item" *ngIf="selectedSettingsItem === 'Profile';then profileSettings"></div>
         <ng-template #profileSettings>
           <div class="setting-content-item">
               <h3>
@@ -106,13 +112,12 @@
               </h3>
           </div>
 
-
+       
           
         </ng-template>
 
-
+ 
 
       </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+      -->
+ 
