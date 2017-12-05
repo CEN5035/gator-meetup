@@ -24,6 +24,7 @@ import { Ng4GeoautocompleteModule } from './ng4-geo-autocomplete';
 import { CreateMeetUpService } from './create-meetup/create-meetup.service';
 import { GetMeetupsService } from './grid/get-meetups.service';
 import { GetMeetupDetailsService } from './show-meetup/show-meetup.service';
+import { CarouselModule } from 'angular4-carousel';
 
 import {
   MatAutocompleteModule,
@@ -127,7 +128,8 @@ export class AppMaterialModule { }
     ReactiveFormsModule,
     AppRoutingModule,
     AppMaterialModule,
-    Ng4GeoautocompleteModule.forRoot()
+    Ng4GeoautocompleteModule.forRoot(),
+    CarouselModule
   ],
   providers: [
     CreateMeetUpService,

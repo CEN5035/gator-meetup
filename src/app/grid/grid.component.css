@@ -8,20 +8,56 @@
 .grid-inner-div {
     padding-left: 15%;
     padding-right: 15%;
-    background: #E5E5E5;
-    padding-top: 30px;
+    background: white;
+    /*padding-top: 30px;*/
     padding-bottom: 30px;
 }
 
 .search-box, #search_places {
-    height:3.0em;
-    width:60%;
+    height:2.8em;
+    width:70%;
     margin-bottom:10px;
-    display: inline!important;
-    
+    display: inline-block!important;
+    color: #868484;
 }
 
 .location-box {
-    display: inline!important;
-    width:10%;
+    display: inline-block!important;
+    width:40%;
+}
+
+.mat-toolbar {
+    background: white important;
+}
+
+.searchBtn {
+    position: relative;
+    left: -367px;
+    top: -63px;
+    width : 13% !important;
+}
+
+.searchWrapper[_ngcontent-c3] {
+    display: inline-block;
+    width: 31%;
+    position: relative;
+    left: 80px;
+    top: -15px;
+}
+
+.locationWrapper {
+    display : inline-block;
+    width: 68%; 
+    position: relative; 
+    right: 304px;
+}
+
+.searchBar {
+    margin-top: 30px;
+    left: 106px;
+    position: relative;
+}
+
+.meetupTile, .mat-card {
+    color: black;
 }

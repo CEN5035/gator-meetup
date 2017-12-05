@@ -4,8 +4,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-
-    "test": "node ./node_modules/mocha/bin/mocha --exit"    
+    "test": "node ./node_modules/mocha/bin/mocha --exit",  
+    "testcoverage" : "nyc --reporter=html mocha -- recursive"  
   },
   "author": "",
   "license": "ISC",
