@@ -27,7 +27,8 @@ Siddhartha Konakanchi ([/siddharthakonakanchi](https://github.com/siddharthakona
 
 ## Integration and Deployment
 Continous Integration done on CircleCI (https://circleci.com/gh/CEN5035/gator-meetup)  
-Node server Autodeployed onto Heroku (https://gator-meetup.herokuapp.com)
+Node server Autodeployed onto Heroku (https://gator-meetup.herokuapp.com)  
+MongoDb database server deployed on MongoDb (https://cloud.mongodb.com/v2/59e55110df9db1282346598b#clusters/detail/Cluster0)
 
 ## Prerequisites
 
