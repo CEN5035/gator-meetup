@@ -4,7 +4,7 @@ Website to organize events within UF
 Tech Stack : Angular, Angular Material, Node.js, Express, MongoDB  
 
 ## Index  
-* [Contibutors](#contributors)  
+* [Contributors](#contributors)  
 * [Integration & Deployment](#integration-and-deployment)
 * [Prerequisites](#prerequisites)  
 * [Installation/Run instructions](#installationrun-instructions)  
